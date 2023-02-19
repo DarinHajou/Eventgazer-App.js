@@ -1,2 +1,4 @@
 @import '/__app/css/base.css';
 @import '/__app/css/variables.css';
+
+@import '/__app/css/modules/style.css';
