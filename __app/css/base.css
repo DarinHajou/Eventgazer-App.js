@@ -1,0 +1,10 @@
+body {
+	background-image: url('/__app/assets/images/artist.jpg');
+	background-size: 105%;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 20vh;
+	margin: 0;
+	padding: 0;
+	font-family: Bebas Neue;
+}
