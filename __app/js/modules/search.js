@@ -1,6 +1,6 @@
-import { fetchEvents, renderEvents } from './Search.js';
+import { fetchEvents, renderEvents } from './events.js';
 
-export default function search() {
+export default function searchEvent() {
   const searchButton = document.getElementById('search-button');
   const cityInput = document.getElementById('location');
   const resultsContainer = document.getElementById('results-container');
@@ -24,5 +24,4 @@ export default function search() {
       console.error(error);
     }
   });
-};
-
+}
