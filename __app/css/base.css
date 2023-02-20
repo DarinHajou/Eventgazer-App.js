@@ -1,6 +1,6 @@
 body {
 	height: 100vh;
-	background: url('/__app/assets/images/artist.jpg') no-repeat center center fixed;
+	background: url('/__app/assets/images/artist.jpg') no-repeat center center ;
 	background-size: cover;
 	background-position: center bottom 20px;
 	margin: 0;
