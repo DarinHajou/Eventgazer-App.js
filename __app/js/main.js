@@ -1,3 +1,3 @@
-import eventSearch from './modules/search.js';
+import search from './modules/search.js';
 
 search();
