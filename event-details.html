@@ -19,6 +19,40 @@
 				<p id="event-price-range"></p>
 			</div>
 		</div>
+
+		<script>
+			const baseUrl = 'https://app.ticketmaster.com/';
+			const clientID = 'TbrR0cz7CJFLfvehoWUIGUpVwO4JNreb';
+			const urlParams = new URLSearchParams(window.location.search);
+			const eventId = urlParams.get('eventId');
+	  
+			async function fetchEventDetails(eventId) {
+			  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}&includeTBA=yes&includeTBD=yes`;
+			  const response = await fetch(endpoint);
+	  
+			  if (!response.ok) {
+				 throw new Error('Unable to fetch event details.');
+			  }
+	  
+			  const data = await response.json();
+	  
+			  return data;
+			}
+	  
+			async function displayEventDetails() {
+			  const event = await fetchEventDetails(eventId);
+	  
+			  document.getElementById('event-image').src = event.images[0].url;
+			  document.getElementById('event-name').textContent = event.name;
+			  document.getElementById('event-date').textContent = event.dates.start.localDate;
+			  document.getElementById('event-time').textContent = event.dates.start.localTime;
+			  document.getElementById('event-venue').textContent = event._embedded.venues[0].name;
+			  document.getElementById('event-price-range').textContent = `Price range: ${event.priceRanges[0].min} - ${event.priceRanges[0].max} ${event.priceRanges[0].currency}`;
+			}
+	  
+			displayEventDetails();
+		 </script>
+	  </body>
 	</body>
 </html>
 
