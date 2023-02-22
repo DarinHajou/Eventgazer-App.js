@@ -41,7 +41,7 @@ export async function renderEvents(events) {
   for (const event of events) {
     const eventId = event.id;
     const { imageUrl, altDescription } = await fetchImage(eventId);
-    resultsHTML += `<div class="event"> <h2 class="event__name">${event.name}</h2> <p>${event.dates.start.localDate}</p> <p>${event.dates.start.localTime}</p> <p>${event._embedded?.venues?.[0]?.city?.name}</p> <img src="${imageUrl}" alt="${altDescription}" class="event-image"> </div>`;
+    resultsHTML += `<div class="event" onClick="showEventDetails('${eventId}')"> <h2 class="event__name">${event.name}</h2> <p>${event.dates.start.localDate}</p> <p>${event.dates.start.localTime}</p> <p>${event._embedded?.venues?.[0]?.city?.name}</p> <img src="${imageUrl}" alt="${altDescription}" class="event-image"> </div>`;
   }
 
   return resultsHTML;
