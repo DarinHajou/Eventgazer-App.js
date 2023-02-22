@@ -1,4 +1,4 @@
-function openModal(event) {
+/* function openModal(event) {
 	const modal = document.getElementById('myModal');
 	const modalName = document.getElementById('modal-name');
 	const modalDate = document.getElementById('modal-date');
@@ -30,4 +30,4 @@ function openModal(event) {
 	  }
 	});
  }
- 
+  */
