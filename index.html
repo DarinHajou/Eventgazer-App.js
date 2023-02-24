@@ -1,33 +1,32 @@
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width">
-		
-		<title>Nightgazer-app</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
 
-		<link rel="stylesheet" href="/__app/css/main.css">
-		<script type="module" src="/__app/js/main.js"></script>
+    <title>Nightgazer-app</title>
 
-	</head>
-	<body class="page">
-		<div class="page__container">
-			<div class="page__overlay"></div>
-			<h1 class="page__title">Find Live Events in Your <span class="highlight">City!</span></h1>
-			<form class="search-form">
-				<input type="text" id="location" class="search-form__input" placeholder="Search by City eg. New Yourk">
-				<button type="button" id="search-button" class="search-form__button">Search</button>
-			</form>
-			<div id="results-container" class="results"></div>
-			<div id="myModal" class="modal">
-			  <div class="modal-content">
-			    <span class="close">&times;</span>
-			    <h2 id="modal-name"></h2>
-			    <p id="modal-date"></p>
-			    <p id="modal-time"></p>
-			    <p id="modal-venue"></p>
-			    <p id="modal-description"></p>
-			  </div>
-			</div>
-		</div>
-	</body>
+    <link rel="stylesheet" href="/__app/css/main.css" />
+    <script type="module" src="/__app/js/main.js"></script>
+  </head>
+  <body class="page">
+    <div class="page__container">
+      <div class="page__overlay"></div>
+      <h1 class="page__title">
+        Find Live Events in Your <span class="highlight">City!</span>
+      </h1>
+      <form class="search-form">
+        <input
+          type="text"
+          id="location"
+          class="search-form__input"
+          placeholder="Search by City eg. New Yourk"
+        />
+        <button type="button" id="search-button" class="search-form__button">
+          Search
+        </button>
+      </form>
+      <div id="results-container" class="results"></div>
+    </div>
+  </body>
 </html>
