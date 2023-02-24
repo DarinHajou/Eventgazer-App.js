@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<link rel="stylesheet" href="/__app/css/main.css">
-		<script type="module" src="/__app/js/main.js"></script>
-		<title>event-details</title>
-	</head>
-	<body>
-		<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio quod officiis labore porro dolorem voluptatibus inventore perferendis. Sint vel esse repellendus blanditiis, numquam officia, similique dolores praesentium sequi quis cum laborum dolore a tenetur, reprehenderit ipsum? Sint neque voluptatum nisi.</p>
-
-		<script>
-			const searchParams = new URLSearchParams(window.location.search);
-			const eventId = searchParams.get('${eventId}');
-		</script>
-	</body>
+    <link rel="stylesheet" href="/__app/css/main.css" />
+    <script type="module" src="/__app/js/main.js"></script>
+    <title>Event Details</title>
+  </head>
+  <body>
+	<div class="event-details">
+		<h1 id="event-name"></h1>
+		<p id="event-date"></p>
+		<p id="event-time"></p>
+		<p id="event-venue"></p>
+		<p id="event-description"></p>
+		<img id="event-image" alt="Event Image">
+	 </div>
+	 <script>
+		const searchParams = new URLSearchParams(window.location.search);
+		const eventId = searchParams.get('${eventId}');
+	</script>
+</body>
 </html>
-
+  </body>
+</html>
