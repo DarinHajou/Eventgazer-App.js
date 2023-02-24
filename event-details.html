@@ -1,81 +1,21 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Document</title>
-
+		<link rel="stylesheet" href="/__app/css/main.css">
+		<script type="module" src="/__app/js/main.js"></script>
+		<title>event-details</title>
 	</head>
-	
 	<body>
-		<h1>Event Details</h1>
-		<div>
-			<img id="event-image" alt="Event Image" width="400" height="400">
-			<div>
-				<h2 id="event-name"></h2>
-				<p id="event-date"></p>
-				<p id="event-time"></p>
-				<p id="event-venue"></p>
-				<p id="event-price-range"></p>
-			</div>
-		</div> -->
+		<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio quod officiis labore porro dolorem voluptatibus inventore perferendis. Sint vel esse repellendus blanditiis, numquam officia, similique dolores praesentium sequi quis cum laborum dolore a tenetur, reprehenderit ipsum? Sint neque voluptatum nisi.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Details</title>
-    <link rel="stylesheet" href="/__app/css/main.css">
-  </head>
-  <body class="page">
-    <div class="event-details-container">
-      <h1 class="event-details-title"></h1>
-      <img class="event-details-image" src="event-details.html?image=${encodeURIComponent(imageUrl)}" alt="${altDescription}" class="event-image" alt="">
-      <p class="event-details-date"></p>
-      <p class="event-details-time"></p>
-      <p class="event-details-location"></p>
-    </div>
-    <script type="module" src="/__app/js/event-details.js"></script>
-  </body>
+		<script>
+			const searchParams = new URLSearchParams(window.location.search);
+			const eventId = searchParams.get('${eventId}');
+		</script>
+	</body>
 </html>
 
-		<!-- <script>
-			const baseUrl = 'https://app.ticketmaster.com/';
-			const clientID = 'TbrR0cz7CJFLfvehoWUIGUpVwO4JNreb';
-			const urlParams = new URLSearchParams(window.location.search);
-			const eventId = urlParams.get('eventId');
-	  
-			async function fetchEventDetails(eventId) {
-			  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}&includeTBA=yes&includeTBD=yes`;
-			  const response = await fetch(endpoint);
-	  
-			  if (!response.ok) {
-				 throw new Error('Unable to fetch event details.');
-			  }
-	  
-			  const data = await response.json();
-	  
-			  return data;
-			}
-	  
-			async function displayEventDetails() {
-			  const event = await fetchEventDetails(eventId);
-	  
-			  document.getElementById('event-image').src = event.images[0].url;
-			  document.getElementById('event-name').textContent = event.name;
-			  document.getElementById('event-date').textContent = event.dates.start.localDate;
-			  document.getElementById('event-time').textContent = event.dates.start.localTime;
-			  document.getElementById('event-venue').textContent = event._embedded.venues[0].name;
-			  document.getElementById('event-price-range').textContent = `Price range: ${event.priceRanges[0].min} - ${event.priceRanges[0].max} ${event.priceRanges[0].currency}`;
-			}
-	  
-			displayEventDetails();
-		 </script>
-	  </body>
-	</body>
-</html> -->
-
-
- 
