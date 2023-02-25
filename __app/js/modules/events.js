@@ -1,4 +1,4 @@
-  export const clientID = 'Vd9hAlqdlCnaaRX5LsLVxY2a4AMyhpO5';
+  export const clientID = '6GMQ3AHP3rnsHUoSVLEuPLvT4hWfyEo6';
   export const baseUrl = 'https://app.ticketmaster.com/';
 
   export async function fetchEvents(city) {
