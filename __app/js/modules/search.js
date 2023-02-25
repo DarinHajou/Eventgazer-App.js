@@ -1,4 +1,4 @@
-import { fetchEvents, renderEvents, baseUrl, clientID } from './events.js';
+import { fetchEvents, renderEvents, baseUrl, clientID, renderEventDetails } from './events.js';
 
 export default function searchEvent() {
   const searchButton = document.getElementById('search-button');
@@ -50,21 +50,3 @@ export async function fetchEventDetails(eventId) {
   return data;
 }
 
-export async function renderEventDetails(eventDetails) {
-  const eventName = document.getElementById('event-name');
-  const eventDate = document.getElementById('event-date');
-  const eventTime = document.getElementById('event-time');
-  const eventVenue = document.getElementById('event-venue');
-  const eventDescription = document.getElementById('event-description');
-
-  if (!eventDetails) {
-    eventName.textContent = 'No event details available';
-    return;
-  }
-
-  eventName.textContent = eventDetails.name;
-  eventDate.textContent = eventDetails.dates.start.localDate;
-  eventTime.textContent = eventDetails.dates.start.localTime;
-  eventVenue.textContent = eventDetails._embedded?.venues?.[0]?.name;
-  eventDescription.textContent = eventDetails.info || 'No information available.';
-}

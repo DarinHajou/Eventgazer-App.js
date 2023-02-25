@@ -35,39 +35,68 @@
     return { imageUrl: data.images[0].url, altDescription: data.images[0].alt };
   }
 
-  async function fetchEventDetails(eventId) {
-    const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}`;
+  export async function fetchEventDetails(eventId) {
+    const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}&include=pricing`;
     const response = await fetch(endpoint);
-
+  
     if (!response.ok) {
       throw new Error('Unable to fetch event details.');
     }
-
+  
     const data = await response.json();
-
+  
     if (data) {
-      return data;
+      const priceRanges = data?.priceRanges?.map(priceRange => `${priceRange.min} - ${priceRange.max} ${priceRange.currency}`).join(', ');
+      const eventDetails = { ...data, priceRanges };
+      return eventDetails;
     } else {
       throw new Error('No event details found.');
     }
   }
 
+  export async function renderEventDetails(eventDetails) {
+    const eventName = document.getElementById('event-name');
+    const eventDate = document.getElementById('event-date');
+    const eventTime = document.getElementById('event-time');
+    const eventVenue = document.getElementById('event-venue');
+    const eventPriceRanges = document.getElementById('event-price-ranges');
+    const eventDescription = document.getElementById('event-description');
+   
+    if (!eventDetails) {
+      eventName.textContent = 'No event details available';
+      return;
+    }
+   
+    eventName.textContent = eventDetails.name;
+    eventDate.textContent = eventDetails.dates.start.localDate;
+    eventTime.textContent = eventDetails.dates.start.localTime;
+    eventVenue.textContent = eventDetails._embedded?.venues?.[0]?.name;
+    eventPriceRanges.textContent = `Price Range: ${eventDetails.priceRanges ? eventDetails.priceRanges[0].min + " - " + eventDetails.priceRanges[0].max + " " + eventDetails.priceRanges[0].currency : "Not available"}`;
+    eventDescription.textContent = eventDetails.info || 'No information available.';
+   }
+   
+
+
   export async function renderEvents(events) {
     let resultsHTML = '';
-
+  
     for (const event of events) {
       const eventId = event.id;
       const { imageUrl, altDescription } = await fetchImage(eventId);
+      const eventDetails = await fetchEventDetails(eventId);
+      const priceRanges = eventDetails.priceRanges || 'Not available';
       resultsHTML += `
         <div class="event"> 
           <h2 class="event__name">${event.name}</h2> 
           <p>${event.dates.start.localDate}</p> 
           <p>${event.dates.start.localTime}</p> 
           <p>${event._embedded?.venues?.[0]?.city?.name}</p> 
+          <p>Price Range: ${priceRanges}</p>
           <img src="${imageUrl}" alt="${altDescription}" class="event-image"> 
           <button data-id="${eventId}" class="event__button">More info</button>
         </div>`;
     }
-
+  
     return resultsHTML;
   }
+  
