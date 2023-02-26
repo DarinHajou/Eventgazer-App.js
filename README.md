@@ -7,13 +7,13 @@ Users can click on an event to see more details.
 #Getting Started
 These instructions will help you set up the project on your local machine for development and testing purposes.
 
-Clone the repository to your local machine:
-git clone https://github.com/<my-username>/nightgazer-app.git
-Open the project in your code editor.
+-Clone the repository to your local machine:
+-git clone https://github.com/<my-username>/nightgazer-app.git
+-Open the project in your code editor.
 
-Open the index.html and event-details.html files in your web browser.
+-Open the index.html and event-details.html files in your web browser.
 
-Enter the name of a city in the search bar on the index.html page to find events happening in that location.
+-Enter the name of a city in the search bar on the index.html page to find events happening in that location.
 
 Click on an event to see more details.
 
@@ -36,6 +36,16 @@ Built With
 -CSS
 -JavaScript
 -Ticketmaster API
+  
+#Links
+link to repository:
+https://github.com/users/DarinHajou/projects/3
+
+link to GitHub project:
+https://github.com/DarinHajou/eventgazer-app.js.git
+ 
+#Contact
+tech.related@hotmail.com
 
 Contributors
 This project was created by Darin Hajou as part of a web development course.
