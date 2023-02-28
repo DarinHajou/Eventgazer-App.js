@@ -87,12 +87,14 @@ export async function renderEvents(events) {
     const eventId = event.id;
     const { imageUrl, altDescription } = await fetchImage(eventId);
     const eventDetails = await fetchEventDetails(eventId);
+    const priceRanges = eventDetails.priceRanges || 'Not available';
     resultsHTML += `
       <div class="event"> 
         <h2 class="event__name">${event.name}</h2> 
         <p>${event.dates.start.localDate}</p> 
         <p>${event.dates.start.localTime}</p> 
         <p>${event._embedded?.venues?.[0]?.city?.name}</p> 
+        <p>Price Range: ${priceRanges}</p>
         <img src="${imageUrl}" alt="${altDescription}" class="event-image"> 
         <button data-id="${eventId}" class="event__button">More info</button>
       </div>`;
@@ -100,4 +102,3 @@ export async function renderEvents(events) {
 
   return resultsHTML;
 }
-
