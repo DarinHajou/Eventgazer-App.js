@@ -94,7 +94,6 @@ export async function renderEvents(events) {
         <p>${event.dates.start.localDate}</p> 
         <p>${event.dates.start.localTime}</p> 
         <p>${event._embedded?.venues?.[0]?.city?.name}</p> 
-        <p>Price Range: ${priceRanges}</p>
         <img src="${imageUrl}" alt="${altDescription}" class="event-image"> 
         <button data-id="${eventId}" class="event__button">More info</button>
       </div>`;
