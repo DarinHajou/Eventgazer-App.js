@@ -1,13 +1,11 @@
 import searchEvent from './modules/search.js';
-import search from './modules/search.js';
 import { baseUrl } from './modules/events.js';
 import { clientID } from './env.js';
-// import { fetchEventDetails } from './modules/events.js';
+import { fetchEventDetails } from './modules/events.js';
 import { fetchImage } from './modules/events.js';
 
 
 searchEvent();
-search();
 
 
  export async function fetchEventDetailsPage(eventId) {

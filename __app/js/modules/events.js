@@ -35,8 +35,8 @@ export async function fetchImage(eventId) {
   return { imageUrl: data.images[0].url, altDescription: data.images[0].alt };
 }
 
-export default async function fetchEventDetails(eventId) {
-  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}&include=dates`;
+export async function fetchEventDetails(eventId) {
+  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}`;
   const response = await fetch(endpoint);
 
   if (!response.ok) {
@@ -60,7 +60,6 @@ export async function renderEventDetails(eventDetails, imageUrl, altDescription)
   const eventDate = document.getElementById('event-date');
   const eventTime = document.getElementById('event-time');
   const eventVenue = document.getElementById('event-venue');
-  const eventPriceRanges = document.getElementById('event-price-ranges');
   const eventDescription = document.getElementById('event-description');
   const eventImage = document.getElementById('event-image');
   
@@ -73,7 +72,6 @@ export async function renderEventDetails(eventDetails, imageUrl, altDescription)
   eventDate.textContent = eventDetails.dates.start.localDate;
   eventTime.textContent = eventDetails.dates.start.localTime;
   eventVenue.textContent = eventDetails._embedded?.venues?.[0]?.name;
-  eventPriceRanges.textContent = `Price Range: ${eventDetails.priceRanges ? eventDetails.priceRanges[0].min + " - " + eventDetails.priceRanges[0].max + " " + eventDetails.priceRanges[0].currency : "Not available"}`;
   eventDescription.textContent = eventDetails.info || 'No information available.';
   
   eventImage.setAttribute('src', imageUrl);
@@ -87,9 +85,7 @@ export async function renderEvents(events) {
   for (const event of events) {
     const eventId = event.id;
     const { imageUrl, altDescription } = await fetchImage(eventId);
-    const eventDetails = await fetchEventDetails(eventId);
-    const priceRanges = eventDetails.priceRanges || 'Not available';
-    resultsHTML += `
+     resultsHTML += `
       <div class="event"> 
         <h2 class="event__name">${event.name}</h2> 
         <p>${event.dates.start.localDate}</p> 
