@@ -46,7 +46,7 @@
 
 
   export async function fetchEventDetails(eventId) {
-    const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}`;
+    // const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}`;
     const response = await fetch(endpoint);
 
     if (!response.ok) {
