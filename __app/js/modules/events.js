@@ -1,8 +1,8 @@
-export const clientID = '6GMQ3AHP3rnsHUoSVLEuPLvT4hWfyEo6';
+import { clientID } from '../env.js';
 export const baseUrl = 'https://app.ticketmaster.com/';
 
 export async function fetchEvents(city) {
-  const endpoint = `${baseUrl}discovery/v2/events.json?apikey=${clientID}&city=${city}&size=50`;
+  const endpoint = `${baseUrl}discovery/v2/events.json?apikey=${clientID}&city=${city}&size=10`;
   const response = await fetch(endpoint);
 
   if (!response.ok) {
@@ -35,8 +35,8 @@ export async function fetchImage(eventId) {
   return { imageUrl: data.images[0].url, altDescription: data.images[0].alt };
 }
 
-export async function fetchEventDetails(eventId) {
-  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}&include=pricing`;
+export default async function fetchEventDetails(eventId) {
+  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}&include=dates`;
   const response = await fetch(endpoint);
 
   if (!response.ok) {
@@ -48,6 +48,7 @@ export async function fetchEventDetails(eventId) {
   if (data) {
     const priceRanges = data?.priceRanges?.map(priceRange => `${priceRange.min} - ${priceRange.max} ${priceRange.currency}`).join(', ');
     const eventDetails = { ...data, priceRanges };
+    console.log(eventDetails)
     return eventDetails;
   } else {
     throw new Error('No event details found.');
