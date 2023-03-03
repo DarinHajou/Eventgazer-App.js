@@ -36,7 +36,7 @@ export async function fetchImage(eventId) {
 }
 
 export async function fetchEventDetails(eventId) {
-  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}`;
+  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}&include=dates,seatmap`;
   const response = await fetch(endpoint);
 
   if (!response.ok) {
@@ -55,6 +55,7 @@ export async function fetchEventDetails(eventId) {
   }
 }
 
+
 export async function renderEventDetails(eventDetails, imageUrl, altDescription) {
   const eventName = document.getElementById('event-name');
   const eventDate = document.getElementById('event-date');
@@ -62,6 +63,8 @@ export async function renderEventDetails(eventDetails, imageUrl, altDescription)
   const eventVenue = document.getElementById('event-venue');
   const eventDescription = document.getElementById('event-description');
   const eventImage = document.getElementById('event-image');
+  const eventSeatmap = document.getElementById('event-seatmap');
+
   
   if (!eventDetails) {
     eventName.textContent = 'No event details available';
@@ -73,6 +76,7 @@ export async function renderEventDetails(eventDetails, imageUrl, altDescription)
   eventTime.textContent = eventDetails.dates.start.localTime;
   eventVenue.textContent = eventDetails._embedded?.venues?.[0]?.name;
   eventDescription.textContent = eventDetails.info || 'No information available.';
+  
   
   eventImage.setAttribute('src', imageUrl);
   eventImage.setAttribute('alt', altDescription);

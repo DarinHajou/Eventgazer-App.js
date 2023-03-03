@@ -9,7 +9,7 @@ searchEvent();
 
 
  export async function fetchEventDetailsPage(eventId) {
-  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}&include=dates`;
+  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}`;
 
   const response = await fetch(endpoint);
 
@@ -25,38 +25,48 @@ searchEvent();
 }
  
 
- export async function renderEventDetailsPage(eventDetails) {
-   const eventName = document.getElementById('event-name');
-   const eventDate = document.getElementById('event-date');
-   const eventTime = document.getElementById('event-time');
-   const eventVenue = document.getElementById('event-venue');
-   const eventPriceRanges = document.getElementById('event-price-ranges');
-   const eventDescription = document.getElementById('event-description');
-   const eventImage = document.getElementById('event-image');
-   
- 
-   if (!eventDetails) {
-     eventName.textContent = 'No event details available';
-     return;
-   }
- 
-   eventName.textContent = eventDetails.name;
-   eventDate.textContent = eventDetails.dates.start.localDate;
-   console.log(eventDetails.dates.end);
-   console.log(eventDetails)
-   eventTime.textContent = `Start time: ${eventDetails.dates.start.localTime} - Local Time`;
-   eventVenue.textContent = eventDetails._embedded?.venues?.[0]?.name;
-   eventPriceRanges.textContent = `Price Range: ${eventDetails.priceRanges ? eventDetails.priceRanges[0].min + " - " + eventDetails.priceRanges[0].max + " " + eventDetails.priceRanges[0].currency : "Not available"}`;
-   eventDescription.textContent = eventDetails.info || 'No information available.';
- 
-   try {
-     const { imageUrl, altDescription } = await fetchImage(eventDetails.id);
-     eventImage.src = imageUrl;
-     eventImage.alt = altDescription;
-   } catch (error) {
-     console.error(error);
-   }
- }
+export async function renderEventDetailsPage(eventDetails) {
+  const eventName = document.getElementById('event-name');
+  const eventDate = document.getElementById('event-date');
+  const eventTime = document.getElementById('event-time');
+  const eventVenue = document.getElementById('event-venue');
+  const eventPriceRanges = document.getElementById('event-price-ranges');
+  const eventDescription = document.getElementById('event-description');
+  const eventImage = document.getElementById('event-image');
+  const eventTicketPrices = document.getElementById('event-ticket-prices');
+  const eventSeatmap = document.getElementById('event-seatmap');
+
+  if (!eventDetails) {
+    eventName.textContent = 'No event details available';
+    return;
+  }
+
+  eventName.textContent = eventDetails.name;
+  eventDate.textContent = eventDetails.dates.start.localDate;
+  eventTime.textContent = `Start time: ${eventDetails.dates.start.localTime} - Local Time`;
+  eventVenue.textContent = eventDetails._embedded?.venues?.[0]?.name;
+  eventPriceRanges.textContent = `Price Range: ${eventDetails.priceRanges ? eventDetails.priceRanges[0].min + " - " + eventDetails.priceRanges[0].max + " " + eventDetails.priceRanges[0].currency : "Not available"}`;
+  eventDescription.textContent = eventDetails.info || 'No information available.';
+  
+  if (eventDetails.seatmap) {
+    const seatmapImg = document.createElement('img');
+    seatmapImg.setAttribute('src', eventDetails.seatmap.staticUrl);
+    seatmapImg.setAttribute('alt', 'Seatmap');
+    eventSeatmap.appendChild(seatmapImg);
+  } else {
+    eventSeatmap.textContent = 'Not available';
+  }
+
+  try {
+    const { imageUrl, altDescription } = await fetchImage(eventDetails.id);
+    eventImage.src = imageUrl;
+    eventImage.alt = altDescription;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
  
  const urlParams = new URLSearchParams(window.location.search);
  const eventId = urlParams.get('id');
