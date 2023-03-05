@@ -14,28 +14,33 @@
   </head>
 
   <body>
+
+    <br>
     <h1>Event Details</h1>
 
     <div class="event-details">
-      <img id="event-details__image" class="event-details__image" src="" alt="Event image"><div>
+      <img id="event-details__image" class="event-details__image" src="" alt="Event image">
+      
+      <h2 id="event-details__name"></h2>
+    
+      <p id="event-details__date"></p>
+    
+      <p id="event-details__time"></p>
 
-        <h1 id="event-details__name"></h1>
+      <p id="event-details__venue"></p>
 
-        <p><span>Date:</span> <span id="event-details__date"></span></p>
+      <p id="event-details__price-ranges"></p>
+    
+      <br>
+      <p><span>Event Description: <br></span> <span id="event-details__description"></span></p>
 
-        <p id="event-details__time"></p>
+      <br>
+    
+      <p><span>Seatmap:</span> <span id="event-details__seatmap"></span></p>
 
-        <p><span>Venue:</span> <span id="event-details__venue"></span></p>
+      <br>
 
-        <p id="event-details__price-ranges"></p>
-
-        <p><span>Seatmap:</span> <span id="event-details__seatmap"></span></p>
-
-        <p><span>Event Description:</span> <span id="event-details__description"></span></p>
-
-        <div id='map' class='event-details__map'>Map</div>
-        
-      </div>
+      <div id='map' class='event-details__map'></div>
     </div>
   </body>
 </html>
