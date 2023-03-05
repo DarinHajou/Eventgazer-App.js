@@ -1,31 +1,34 @@
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
 
-      <title>Eventgazer-app</title>
+    <title>Eventgazer-app</title>
 
-      <link rel="stylesheet" href="/__app/css/main.css">
-      <script type="module" src="/__app/js/main.js"></script>
-    </head>
-    <body class="event-search">
-        <div class="event-search__overlay"></div>
-        <h1 class="event-search__title">
-          Find Live Events in Your <span class="highlight">City!</span>
-        </h1>
-        <form class="event-search__form">
-          <input
-            type="text"
-            id="event-search__location"
-            class="event-search__form-input"
-            placeholder="Search by City eg. New York"
-          />
-          <button type="button" id="event-search__button">
-            Search
-          </button>
-        </form>
-        <div id="results-container" class="event-search__results-container"></div>
-      </div>
-    </body>
-  </html>
+    <link rel="stylesheet" href="/__app/css/main.css">
+    <script type="module" src="/__app/js/main.js"></script>
+  </head>
+
+  <body class="event-search">
+    <div class="event-search__overlay"></div>
+    
+    <h1 class="event-search__title">
+      Find Live Events in Your <span class="highlight">City!</span>
+    </h1>
+
+    <form class="event-search__form">
+      <input
+        type="text"
+        id="event-search__location"
+        class="event-search__form-input"
+        placeholder="Search by City eg. New York"
+      />
+      <button type="button" id="event-search__button">
+        Search
+      </button>
+    </form>
+
+    <div id="results-container" class="event-search__results-container"></div>
+  </body>
+</html>
