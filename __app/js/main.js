@@ -1,8 +1,10 @@
+  // import mapboxgl from './mapbox-gl';
   import searchEvent from './modules/search.js';
   import { baseUrl } from './modules/events.js';
   import { clientID } from './env.js';
   import { fetchEventDetails } from './modules/events.js';
   import { fetchImage } from './modules/events.js';
+
 
   searchEvent();
 
@@ -37,6 +39,24 @@
       eventName.textContent = 'No event details available';
       return;
     }
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY29kZXRlZ3JpdHkiLCJhIjoiY2xld2p0ZnBnMGhnbzNzbzRxaTltZHUwcyJ9.ztTEqEq4WeTRyV68oE3wMg';
+
+    const longitude = eventDetails._embedded?.venues?.[0]?.location?.longitude;
+    const latitude = eventDetails._embedded?.venues?.[0]?.location?.latitude;
+
+  const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11',
+  center: [longitude, latitude],
+  zoom: 12
+});
+
+ // Create a new marker
+ const marker = new mapboxgl.Marker()
+ .setLngLat([longitude, latitude])
+ .addTo(map);
+    
 
     eventName.textContent = eventDetails.name;
     eventDate.textContent = eventDetails.dates.start.localDate;

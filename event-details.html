@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width">
     <title>Event Details</title>
 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
+    
     <link rel="stylesheet" href="/__app/css/main.css">
     <script type="module" src="/__app/js/main.js"></script>
     <script type="module" src="/__app/js/modules/events.js"></script>
@@ -29,6 +32,9 @@
         <p><span>Seatmap:</span> <span id="event-details__seatmap"></span></p>
 
         <p><span>Event Description:</span> <span id="event-details__description"></span></p>
+
+        <div id='map' class='event-details__map'>Map</div>
+        
       </div>
     </div>
   </body>

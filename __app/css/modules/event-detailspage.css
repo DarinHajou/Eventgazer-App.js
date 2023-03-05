@@ -11,3 +11,11 @@
  img:hover {
 	transform: scale(1.075);
  }
+
+
+ .event-details__map {
+	height: 300px;
+	z-index: 100;
+ }
+
+ 
