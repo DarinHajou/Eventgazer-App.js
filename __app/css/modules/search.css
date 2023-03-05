@@ -1,4 +1,4 @@
-.page {
+.event-search {
 	position: relative;
 	height: 100vh;
 	background: url('/__app/assets/images/artist.jpg') no-repeat center center;
@@ -11,7 +11,7 @@
 	color: rgb(0, 0, 0);
 }
 
-.page__overlay {
+.event-search__overlay {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -20,7 +20,7 @@
 	background-color: rgba(39, 37, 37, 0.4);
 }
 
-.page__title {
+.event-search__title {
 	position: absolute;
 	top: 40%;
 	left: 45%;
@@ -34,7 +34,7 @@
 
 }
 
-.search-form {
+.event-search__form {
 	position: relative;
 	top: 420px;
 	left:50%;
@@ -47,7 +47,7 @@
 	margin-bottom: 40px;
 }
 
-.search-form__input {
+.event-search__form-input {
 	margin-top: 30px auto;
 	margin-top: 30px auto;
 	width: 70%;
@@ -59,7 +59,7 @@
 	margin-right: 25px;
 }
 
-.search-form__button {
+#event-search__button {
 	width: 15%;
 	height: 50px;
 	padding: 10px;
@@ -71,7 +71,7 @@
 	cursor: pointer;
 }
 
-.search-form__button:hover {
+#event-search__button:hover {
 	background-color: #fff;
 	color: #333;
 }
