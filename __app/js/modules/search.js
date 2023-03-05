@@ -3,7 +3,7 @@
 
 
   export default function searchEvent() {
-    const searchButton = document.getElementById('search-button');
+    const searchButton = document.getElementById('event-search__button');
     const cityInput = document.getElementById('location');
     const resultsContainer = document.getElementById('results-container');
   

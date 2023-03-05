@@ -36,7 +36,7 @@ export async function fetchImage(eventId) {
 }
 
 export async function fetchEventDetails(eventId) {
-  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}&include=dates,seatmap`;
+  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}&include=dates`;
   const response = await fetch(endpoint);
 
   if (!response.ok) {
@@ -63,8 +63,6 @@ export async function renderEventDetails(eventDetails, imageUrl, altDescription)
   const eventVenue = document.getElementById('event-venue');
   const eventDescription = document.getElementById('event-description');
   const eventImage = document.getElementById('event-image');
-  const eventSeatmap = document.getElementById('event-seatmap');
-
   
   if (!eventDetails) {
     eventName.textContent = 'No event details available';
