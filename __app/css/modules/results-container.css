@@ -11,8 +11,28 @@
 	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 	/* gap: 10px; */
  }
- 
- .event-image {
+
+ .result-container__moreinfo-button {
+	position: relative;
+	top: 40px;
+	right: 175px;
+	transform: translate(-50%, -50%);
+	display: inline-block;
+	padding: 5px 15px;
+	background-color: rgb(41, 42, 41);
+	color: #fff;
+	/* text-decoration: none; */
+	border-radius: 10px;
+	/* margin-top: 10px; */
+	cursor: pointer;
+ }
+
+ .result-container__moreinfo-button:hover {
+	background-color: rgb(18, 18, 18);
+	color: #fff;
+ }
+
+ .results-container__image {
 	max-width: 100%;
 	height: 250px;
 	object-fit: cover;
@@ -21,13 +41,9 @@
 	transition: 200ms transform ease-in-out;
 	border-radius: 10px;
  }
- 
- img:hover {
-	transform: scale(1.075);
- }
- 
 
- .event {
+ 
+ .results-container__cards {
 	width: 330px;
 	height: 500px;
 	display: inline-block;
@@ -43,27 +59,7 @@
 	overflow: hidden;
  }
  
- .event__name {
+ .results-container__event-name {
 	font-size: 20px;
 	overflow: hidden;
- }
-
- .event__button {
-	position: relative;
-	top: 40px;
-	right: 175px;
-	transform: translate(-50%, -50%);
-	display: inline-block;
-	padding: 5px 15px;
-	background-color: rgb(41, 42, 41);
-	color: #fff;
-	/* text-decoration: none; */
-	border-radius: 10px;
-	/* margin-top: 10px; */
-	cursor: pointer;
- }
-
- .event__button:hover {
-	background-color: rgb(18, 18, 18);
-	color: #fff;
  }

@@ -4,7 +4,7 @@
 
   export default function searchEvent() {
     const searchButton = document.getElementById('event-search__button');
-    const cityInput = document.getElementById('location');
+    const cityInput = document.getElementById('event-search__location');
     const resultsContainer = document.getElementById('results-container');
   
     if (searchButton && cityInput && resultsContainer) {
@@ -26,9 +26,9 @@
           const resultsHTML = await renderEvents(events);
           resultsContainer.innerHTML = resultsHTML;
   
-          const eventButtons = document.querySelectorAll('.event__button');
+          const eventButtons = document.querySelectorAll('.result-container__moreinfo-button');
           eventButtons.forEach((button) => {
-            button.addEventListener('click', async (event) => {
+            button.addEventListener('click', async (event) => { 
               const eventId = event.target.dataset.id;
               const eventDetails = await fetchEventDetails(eventId);
               renderEventDetails(eventDetails);
