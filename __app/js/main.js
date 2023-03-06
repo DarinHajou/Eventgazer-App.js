@@ -1,4 +1,3 @@
-  // import mapboxgl from './mapbox-gl';
   import searchEvent from './modules/search.js';
   import { baseUrl } from './modules/events.js';
   import { clientID } from './env.js';
@@ -53,16 +52,16 @@
 });
 
  // Create a new marker
- const marker = new mapboxgl.Marker()
- .setLngLat([longitude, latitude])
- .addTo(map);
+  const marker = new mapboxgl.Marker()
+    .setLngLat([longitude, latitude])
+    .addTo(map);
     
 
     eventName.textContent = eventDetails.name;
-    eventDate.textContent = eventDetails.dates.start.localDate;
-    eventTime.textContent = `Start time: ${eventDetails.dates.start.localTime} - Local Time`;
-    eventVenue.textContent = eventDetails._embedded?.venues?.[0]?.name;
-    eventPriceRanges.textContent = `Price Range: ${eventDetails.priceRanges ? eventDetails.priceRanges[0].min + " - " + eventDetails.priceRanges[0].max + " " + eventDetails.priceRanges[0].currency : "Not available"}`;
+    eventDate.innerHTML = `<b> Date: </b> ${eventDetails.dates.start.localDate}`;
+    eventTime.innerHTML = `<b>Start time: </b> ${eventDetails.dates.start.localTime} - Local Time`;
+    eventVenue.innerHTML = `<b>Venue:</b> ${eventDetails._embedded?.venues?.[0]?.name ? ' ' + eventDetails._embedded.venues[0].name : 'Not available'}`;
+    eventPriceRanges.innerHTML = `<b>Price Range:</b> ${eventDetails.priceRanges ? eventDetails.priceRanges[0].min + " - " + eventDetails.priceRanges[0].max + " " + eventDetails.priceRanges[0].currency : "Not available"}`;
     eventDescription.textContent = eventDetails.info || 'No information available.';
 
     if (eventDetails.seatmap) {
