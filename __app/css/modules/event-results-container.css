@@ -1,10 +1,10 @@
 #results-container {
 	position: absolute;
 	width: 85%;
-	margin-top: 800px;
-	margin-left: 40px;
+	margin-top: 500px;
+	margin-left: 100px;
 	background-color: rgb(61, 61, 61);
-	padding: 60px;
+	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px #333;
 	display: grid;

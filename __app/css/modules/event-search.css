@@ -20,18 +20,42 @@
 	background-color: rgba(39, 37, 37, 0.4);
 }
 
-.event-search__title {
-	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	position: absolute;
-	top: 47%;
-	left: 40%;
-	transform: translate(-50%, -50%);
-	z-index: 1;
+#event-search__title {
+
+	position: relative;
+	font-family: 'Helvetica Neue', sans-serif;
+	font-size: 40px;
+	text-align: center;
+	background-color: #333;
+	padding: 20px;
+	color: rgb(255, 255, 255);
+	letter-spacing: 1px;
 }
 
+.event-search__title-highlight {
+	text-decoration: underline;
+}
+
+.event-search__title-highlight::before {
+	content: "";
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+	background: url('/__app/assets/images/skyline.svg') no-repeat center center;
+	background-position: 0 10px;
+	background-size: contain;
+	text-decoration: underline;
+ }
+ 
+ #event-search__title:hover {
+	color: #ff9900;
+	transition: color 0.3s ease-in-out;
+ }
+ 
 .event-search__form {
 	position: relative;
-	top: 420px;
+	top: 50%;
 	left:50%;
 	transform: translate(-50%, -50%);
 	display: flex;
