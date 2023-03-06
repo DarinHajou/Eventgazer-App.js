@@ -26,15 +26,15 @@ searchEvent();
  
 
 export async function renderEventDetailsPage(eventDetails) {
-  const eventName = document.getElementById('event-name');
-  const eventDate = document.getElementById('event-date');
-  const eventTime = document.getElementById('event-time');
-  const eventVenue = document.getElementById('event-venue');
-  const eventPriceRanges = document.getElementById('event-price-ranges');
-  const eventDescription = document.getElementById('event-description');
-  const eventImage = document.getElementById('event-image');
+  const eventName = document.getElementById('event-details__name');
+  const eventImage = document.getElementById('event-details__image');
+  const eventDate = document.getElementById('event-details__date');
+  const eventTime = document.getElementById('event-details__time');
+  const eventVenue = document.getElementById('event-details__venue');
+  const eventPriceRanges = document.getElementById('event-details__price-ranges');
+  const eventDescription = document.getElementById('event-details__description');
   const eventTicketPrices = document.getElementById('event-ticket-prices');
-  const eventSeatmap = document.getElementById('event-seatmap');
+  const eventSeatmap = document.getElementById('event-details__seatmap');
 
   if (!eventDetails) {
     eventName.textContent = 'No event details available';

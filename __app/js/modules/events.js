@@ -57,12 +57,12 @@ export async function fetchEventDetails(eventId) {
 
 
 export async function renderEventDetails(eventDetails, imageUrl, altDescription) {
-  const eventName = document.getElementById('event-name');
-  const eventDate = document.getElementById('event-date');
-  const eventTime = document.getElementById('event-time');
-  const eventVenue = document.getElementById('event-venue');
-  const eventDescription = document.getElementById('event-description');
-  const eventImage = document.getElementById('event-image');
+  const eventName = document.getElementById('event-results__name');
+  const eventDate = document.getElementById('event-results__date');
+  const eventTime = document.getElementById('event-results__time');
+  const eventVenue = document.getElementById('event-results__venue');
+  const eventDescription = document.getElementById('event-results__description');
+  const eventImage = document.getElementById('event-results__image');
   
   if (!eventDetails) {
     eventName.textContent = 'No event details available';
@@ -88,13 +88,13 @@ export async function renderEvents(events) {
     const eventId = event.id;
     const { imageUrl, altDescription } = await fetchImage(eventId);
      resultsHTML += `
-      <div class="event"> 
-        <h2 class="event__name">${event.name}</h2> 
+      <div class="results-container__cards"> 
+        <h2 class="results-container__event-name">${event.name}</h2> 
         <p>${event.dates.start.localDate}</p> 
         <p>${event.dates.start.localTime}</p> 
         <p>${event._embedded?.venues?.[0]?.city?.name}</p> 
-        <img src="${imageUrl}" alt="${altDescription}" class="event-image"> 
-        <button data-id="${eventId}" class="event__button">More info</button>
+        <img src="${imageUrl}" alt="${altDescription}" class="results-container__image"> 
+        <button data-id="${eventId}" class="result-container__moreinfo-button">More info</button>
       </div>`;
   }
 

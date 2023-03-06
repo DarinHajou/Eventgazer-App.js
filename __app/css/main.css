@@ -1,5 +1,6 @@
 @import '/__app/css/base.css';
 @import '/__app/css/variables.css';
 
-@import '/__app/css/modules/search.css';
-@import '/__app/css/modules/events.css';
+@import '/__app/css/modules/event-search.css';
+@import '/__app/css/modules/event-detailspage.css';
+@import '/__app/css/modules/results-container.css';
