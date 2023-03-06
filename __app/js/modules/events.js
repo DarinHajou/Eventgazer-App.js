@@ -1,4 +1,5 @@
 import { clientID } from '../env.js';
+
 export const baseUrl = 'https://app.ticketmaster.com/';
 
 export async function fetchEvents(city) {
@@ -48,13 +49,12 @@ export async function fetchEventDetails(eventId) {
   if (data) {
     const priceRanges = data?.priceRanges?.map(priceRange => `${priceRange.min} - ${priceRange.max} ${priceRange.currency}`).join(', ');
     const eventDetails = { ...data, priceRanges };
-    console.log(eventDetails)
+    console.log(eventDetails);
     return eventDetails;
   } else {
     throw new Error('No event details found.');
   }
 }
-
 
 export async function renderEventDetails(eventDetails, imageUrl, altDescription) {
   const eventName = document.getElementById('event-results__name');
@@ -75,12 +75,10 @@ export async function renderEventDetails(eventDetails, imageUrl, altDescription)
   eventVenue.textContent = eventDetails._embedded?.venues?.[0]?.name;
   eventDescription.textContent = eventDetails.info || 'No information available.';
   
-  
   eventImage.setAttribute('src', imageUrl);
   eventImage.setAttribute('alt', altDescription);
 }
 
- 
 export async function renderEvents(events) {
   let resultsHTML = '';
 

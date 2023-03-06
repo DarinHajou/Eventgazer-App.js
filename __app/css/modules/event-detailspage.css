@@ -11,28 +11,3 @@
  img:hover {
 	transform: scale(1.075);
  }
-
-
- 
-/* 
- .results-container__cards {
-	width: 330px;
-	height: 500px;
-	display: inline-block;
-	text-align: center;
-	margin: 10px;
-	padding: 20px;
-	background-color: white;
-	border: 1px solid #ddd;
-	border-radius: 10px;
-	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-	border: 1px solid gray;
-	white-space: nowrap;
-	overflow: hidden;
- }
- 
- .results-container__event-name {
-	font-size: 20px;
-	overflow: hidden;
- } */
-
