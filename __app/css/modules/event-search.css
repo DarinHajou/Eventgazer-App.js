@@ -22,29 +22,31 @@
 
 #event-search__title {
 	position: relative;
+	top: 400px;
+	right: 100px;
 	font-family: 'Helvetica Neue', sans-serif;
-	font-size: 40px;
+	font-size: 52px;
 	text-align: center;
-	background-color: #333;
+	/* background-color: #333; */
 	padding: 20px;
-	color: rgb(255, 255, 255);
+	color: rgb(250, 200, 200);
 	letter-spacing: 1px;
 }
 
 .event-search__title-highlight {
 	text-decoration: underline;
+	/* font-size: 60px; */
 }
+
 
 .event-search__title-highlight::before {
 	content: "";
 	display: inline-block;
-	width: 50px;
-	height: 50px;
+	/* width: 20px; */
 	margin-right: 10px;
-	background: url('/__app/assets/images/skyline.svg') no-repeat center center;
-	background-position: 0 10px;
-	background-size: contain;
-	text-decoration: underline;
+	/* background: url('/__app/assets/images/skyline.svg') no-repeat center center; */
+	/* background-position: 10px 10px;  */
+	/* background-size: 80px 60px; */
  }
  
  #event-search__title:hover {
