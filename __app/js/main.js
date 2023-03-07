@@ -89,6 +89,7 @@ else {
     eventVenue.innerHTML = `<b>Venue:</b> ${eventDetails._embedded?.venues?.[0]?.name ? ' ' + eventDetails._embedded.venues[0].name : 'Not available'}`;
     eventPriceRanges.innerHTML = `<b>Price Range:</b> ${eventDetails.priceRanges ? eventDetails.priceRanges[0].min + " - " + eventDetails.priceRanges[0].max + " " + eventDetails.priceRanges[0].currency : "Not available"}`;
     eventDescription.textContent = eventDetails.info || 'No information available.';
+    eventAccessibility.style.fontWeight = 'normal';
     eventAccessibility.textContent = eventDetails.accesibility || 'No accessibility information available';
 
     if (eventDetails.seatmap) {
