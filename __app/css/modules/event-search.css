@@ -21,17 +21,12 @@
 }
 
 .event-search__title {
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	position: absolute;
-	top: 40%;
-	left: 45%;
+	top: 47%;
+	left: 40%;
 	transform: translate(-50%, -50%);
 	z-index: 1;
-}
-
-.highlight {
-	background: red;
-	background-color: rgb(177, 177, 9);
-
 }
 
 .event-search__form {

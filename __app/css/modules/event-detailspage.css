@@ -16,18 +16,11 @@ body {
 	transform: scale(1.075);
  }
 
-/* 
- .event-details__map {
-	height: 300px;
-	z-index: 100;
- } */
-
  .details-container {
 	font-family: Arial, sans-serif;
 	font-size: 16px;
 	margin: 0;
 	padding: 0;
-	/* display: flex; */
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
@@ -87,3 +80,16 @@ body {
 	height: auto;
  }
 
+ #event-details__buy-button {
+	background-color: #2ecc71;
+	color: #ffffff;
+	border: none;
+	padding: 12px 24px;
+	border-radius: 6px;
+	font-size: 16px;
+	cursor: pointer;
+ }
+ 
+ #event-details__buy-button:hover {
+	background-color: #27ae60;
+ }

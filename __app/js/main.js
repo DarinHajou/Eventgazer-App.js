@@ -33,6 +33,32 @@
     const eventDescription = document.getElementById('event-details__description');
     const eventTicketPrices = document.getElementById('event-ticket-prices');
     const eventSeatmap = document.getElementById('event-details__seatmap');
+    const buyTicketButton = document.getElementById('event-details__buy-button');
+    const eventAccessibility = document.getElementById('event-details__accessibility');
+
+    const eventSchedule = document.getElementById('event-details__schedule');
+    if (eventDetails._embedded && eventDetails._embedded.events) {
+    const events = eventDetails._embedded.events;
+    events.forEach(event => {
+    const startTime = event.dates.start.localTime;
+    const endTime = event.dates.end.localTime;
+    const eventName = event.name;
+    const eventItem = document.createElement('li');
+    eventItem.textContent = `${startTime} - ${endTime}: ${eventName}`;
+    eventSchedule.appendChild(eventItem);
+    console.log(typeof eventDetails._embedded?.attractions[0]?.eventSchedule?.dateTBA);
+
+  });
+}
+else {
+  eventSchedule.textContent = 'No schedule information available.';
+}
+
+
+    buyTicketButton.addEventListener('click', () => {
+    const eventUrl = eventDetails.url;
+    window.open(eventUrl, '_blank');
+    });
 
     if (!eventDetails) {
       eventName.textContent = 'No event details available';
@@ -63,6 +89,7 @@
     eventVenue.innerHTML = `<b>Venue:</b> ${eventDetails._embedded?.venues?.[0]?.name ? ' ' + eventDetails._embedded.venues[0].name : 'Not available'}`;
     eventPriceRanges.innerHTML = `<b>Price Range:</b> ${eventDetails.priceRanges ? eventDetails.priceRanges[0].min + " - " + eventDetails.priceRanges[0].max + " " + eventDetails.priceRanges[0].currency : "Not available"}`;
     eventDescription.textContent = eventDetails.info || 'No information available.';
+    eventAccessibility.textContent = eventDetails.accesibility || 'No accessibility information available';
 
     if (eventDetails.seatmap) {
       const seatmapImg = document.createElement('img');
