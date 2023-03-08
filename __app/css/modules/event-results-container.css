@@ -63,7 +63,15 @@
 	overflow: hidden;
  }
 
- @media (max-width: 768px) {
+ #total-events {
+	color: #ffe8e8;
+	position: absolute;
+	top: 750px;
+	margin: 10px;
+	padding: 10px;
+	}
+
+ @media screen and (max-width: 768px) {
 	#results-container {
 		width: 90%;
 		margin-bottom: 10px;
@@ -103,11 +111,4 @@
       transform: translateY(-50%);
       margin-top: 20px;
 	}
-}
-
-.total-events {
-color: #fff;
-position: absolute;
-margin: 10px;
-padding: 10px;
 }
