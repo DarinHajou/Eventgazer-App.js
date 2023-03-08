@@ -1,10 +1,10 @@
 #results-container {
 	position: absolute;
 	width: 95%;
-	margin-top: 700px;
+	margin-top: 720px;
+	padding: 20px;
 	margin-left: 20px;
 	background-color: #0D2B3E   ;
-	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px #333;
 	display: grid;
@@ -14,13 +14,13 @@
 
  .result-container__moreinfo-button {
 	position: relative;
-	top: 50px;
+	top: 59px;
 	right: 50%;
 	transform: translate(-50%, -50%);
 	font-size: 14px;
 	/* display: inline-block; */
-	padding: 5px 40px;
-	background-color: #005596;
+	padding: 10px 30px;
+	background-color: #3E0D2B;
 	color: #fff;
 	border-radius: 10px;
 	cursor: pointer;
@@ -64,11 +64,12 @@
  }
 
  #total-events {
-	color: #ffe8e8;
+	color: #000;
 	position: absolute;
-	top: 750px;
+	top: 800px;
 	margin: 10px;
-	padding: 10px;
+	padding: 30px;
+	font-weight: 510;
 	}
 
  @media screen and (max-width: 768px) {

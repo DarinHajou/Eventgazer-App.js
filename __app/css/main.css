@@ -2,6 +2,6 @@
 @import '/__app/css/variables.css';
 
 @import '/__app/css/modules/event-search.css';
-@import '/__app/css/modules/event-detailspage.css';
+@import '/__app/css/modules/event-details-page.css';
 @import '/__app/css/modules/event-results-container.css';
-@import '/__app/css/modules/loading.css';
+@import '/__app/css/modules/loading-spinner.css';
