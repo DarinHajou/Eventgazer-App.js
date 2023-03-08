@@ -1,3 +1,7 @@
+/* html{
+	background-color: #2A2D34;
+
+} */
 .event-search {
 	position: relative;
 	height: 100vh;
@@ -15,18 +19,19 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 100%;
+	height: 97%;
 	width: 100%;
 	background-color: rgba(39, 37, 37, 0.4);
 }
 
 #event-search__title {
 	position: relative;
+	top: 300px;
 	font-family: 'Helvetica Neue', sans-serif;
-	font-size: 40px;
+	font-size: 58px;
 	text-align: center;
-	background-color: #333;
-	padding: 20px;
+	/* background-color: #333; */
+	padding: 10px;
 	color: rgb(255, 255, 255);
 	letter-spacing: 1px;
 }
@@ -38,13 +43,12 @@
 .event-search__title-highlight::before {
 	content: "";
 	display: inline-block;
-	width: 50px;
-	height: 50px;
 	margin-right: 10px;
-	background: url('/__app/assets/images/skyline.svg') no-repeat center center;
-	background-position: 0 10px;
-	background-size: contain;
-	text-decoration: underline;
+	/* background: url('/__app/assets/images/skyline.svg') no-repeat center center; */
+	/* background-position: 0 10px; */
+	/* background-size: 0dvb; */
+	/* background-size: cover; */
+
  }
  
  #event-search__title:hover {
@@ -55,21 +59,18 @@
 .event-search__form {
 	position: relative;
 	top: 50%;
-	left:50%;
+	left:55%;
 	transform: translate(-50%, -50%);
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	width: 80%;
-	height: 100px;
-	margin-bottom: 40px;
+	width: 60%;
 }
 
 .event-search__form-input {
 	margin-top: 30px auto;
 	margin-top: 30px auto;
 	width: 70%;
-	height: 30px;
+	height: 40px;
 	padding: 10px;
 	font-size: 18px;
 	border: none;
@@ -78,9 +79,9 @@
 }
 
 #event-search__button {
-	width: 15%;
-	height: 50px;
-	padding: 10px;
+	width: 20%;
+	height: 60px;
+	padding: 20px;
 	font-size: 18px;
 	background-color: #333;
 	color: #fff;
