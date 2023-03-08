@@ -83,7 +83,8 @@ export async function renderEvents(events) {
 
   for (const event of events) {
     const eventId = event.id;
-    const { imageUrl, altDescription } = await fetchImage(eventId);
+   const imageUrl = event.images?.[0]?.url || '';
+const altDescription = event.images?.[0]?.alt || 'No image available';
      resultsHTML += `
       <div class="results-container__cards"> 
         <h2 class="results-container__event-name">${event.name}</h2> 

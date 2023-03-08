@@ -11,7 +11,7 @@ export default function searchEvent() {
   if (searchButton && cityInput && resultsContainer && loadingSpinner && totalEvents) {
     loadingSpinner.classList.add('hidden');
     searchButton.addEventListener('click', async function () {
-      const city = cityInput.value;
+      const city = cityInput.value.trim();
 
       try {
         if (!city) {

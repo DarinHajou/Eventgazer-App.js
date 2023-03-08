@@ -2,26 +2,11 @@
   import { baseUrl } from './modules/events.js';
   import { clientID } from './env.js';
   import { fetchEventDetails } from './modules/events.js';
-  import { fetchImage } from './modules/events.js';
+  // import { fetchEventDetails } from './modules/events.js';
+  // import { fetchImage } from './modules/events.js';
 
 
   searchEvent();
-
-  export async function fetchEventDetailsPage(eventId) {
-    const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}`;
-
-    const response = await fetch(endpoint);
-
-    if (!response.ok) {
-      throw new Error('Unable to fetch event details.');
-    }
-
-    const eventDetails = await response.json();
-    const { imageUrl, altDescription } = await fetchImage(eventId);
-    await renderEventDetailsPage(eventDetails, imageUrl, altDescription);
-
-    return eventDetails;
-  }
 
   export async function renderEventDetailsPage(eventDetails) {
     const eventName = document.getElementById('event-details__name');
@@ -35,54 +20,49 @@
     const eventSeatmap = document.getElementById('event-details__seatmap');
     const buyTicketButton = document.getElementById('event-details__buy-button');
     const eventAccessibility = document.getElementById('event-details__accessibility');
-
     const eventSchedule = document.getElementById('event-details__schedule');
+  
     if (eventDetails._embedded && eventDetails._embedded.events) {
-    const events = eventDetails._embedded.events;
-    events.forEach(event => {
-    const startTime = event.dates.start.localTime;
-    const endTime = event.dates.end.localTime;
-    const eventName = event.name;
-    const eventItem = document.createElement('li');
-    eventItem.textContent = `${startTime} - ${endTime}: ${eventName}`;
-    eventSchedule.appendChild(eventItem);
-    console.log(typeof eventDetails._embedded?.attractions[0]?.eventSchedule?.dateTBA);
-
-  });
-}
-else {
-  eventSchedule.textContent = 'No schedule information available.';
-}
-
-
+      const events = eventDetails._embedded.events;
+      events.forEach(event => {
+        const startTime = event.dates.start.localTime;
+        const endTime = event.dates.end.localTime;
+        const eventName = event.name;
+        const eventItem = document.createElement('li');
+        eventItem.textContent = `${startTime} - ${endTime}: ${eventName}`;
+        eventSchedule.appendChild(eventItem);
+        console.log(typeof eventDetails._embedded?.attractions[0]?.eventSchedule?.dateTBA);
+      });
+    } else {
+      eventSchedule.textContent = 'No schedule information available.';
+    }
+  
     buyTicketButton.addEventListener('click', () => {
-    const eventUrl = eventDetails.url;
-    window.open(eventUrl, '_blank');
+      const eventUrl = eventDetails.url;
+      window.open(eventUrl, '_blank');
     });
-
+  
     if (!eventDetails) {
       eventName.textContent = 'No event details available';
       return;
     }
-
+  
     mapboxgl.accessToken = 'pk.eyJ1IjoiY29kZXRlZ3JpdHkiLCJhIjoiY2xld2p0ZnBnMGhnbzNzbzRxaTltZHUwcyJ9.ztTEqEq4WeTRyV68oE3wMg';
-
+  
     const longitude = eventDetails._embedded?.venues?.[0]?.location?.longitude;
     const latitude = eventDetails._embedded?.venues?.[0]?.location?.latitude;
-
-  const map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
-  center: [longitude, latitude],
-  zoom: 12
-});
-
- // Create a new marker
-  const marker = new mapboxgl.Marker()
-    .setLngLat([longitude, latitude])
-    .addTo(map);
+  
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [longitude, latitude],
+      zoom: 12
+    });
+  
+    const marker = new mapboxgl.Marker()
+      .setLngLat([longitude, latitude])
+      .addTo(map);
     
-
     eventName.textContent = eventDetails.name;
     eventDate.innerHTML = `<b> Date: </b> ${eventDetails.dates.start.localDate}`;
     eventTime.innerHTML = `<b>Start time: </b> ${eventDetails.dates.start.localTime} - Local Time`;
@@ -90,7 +70,8 @@ else {
     eventPriceRanges.innerHTML = `<b>Price Range:</b> ${eventDetails.priceRanges ? eventDetails.priceRanges[0].min + " - " + eventDetails.priceRanges[0].max + " " + eventDetails.priceRanges[0].currency : "Not available"}`;
     eventDescription.textContent = eventDetails.info || 'No information available.';
     eventAccessibility.style.fontWeight = 'normal';
-    eventAccessibility.textContent = eventDetails.accesibility || 'No accessibility information available';
+    eventAccessibility.textContent = eventDetails.accessibility || 'No accessibility information available';
+    
 
     if (eventDetails.seatmap) {
       const seatmapImg = document.createElement('img');
@@ -102,9 +83,9 @@ else {
     }
 
     try {
-      const { imageUrl, altDescription } = await fetchImage(eventDetails.id);
-      eventImage.src = imageUrl;
-      eventImage.alt = altDescription;
+      // const { imageUrl, altDescription } = await fetchImage(eventDetails.id);
+      eventImage.src = eventDetails.images[0].url;
+      eventImage.alt = eventDetails.name;
     } catch (error) {
       console.error(error);
     }
@@ -115,7 +96,7 @@ else {
 
   if (eventId) {
     try {
-      const eventDetails = await fetchEventDetailsPage(eventId);
+      const eventDetails = await fetchEventDetails(eventId);
       renderEventDetailsPage(eventDetails);
     } catch (error) {
       console.error(error);
