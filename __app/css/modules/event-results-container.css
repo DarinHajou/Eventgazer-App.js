@@ -1,9 +1,9 @@
 #results-container {
 	position: absolute;
 	width: 95%;
-	margin-top: 750px;
+	margin-top: 640px;
 	margin-left: 20px;
-	background-color: #2A2D34;
+	background-color: rgb(61, 61, 61);
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px #333;
@@ -45,7 +45,7 @@
 	height: 520px;
 	display: inline-block;
 	text-align: center;
-	margin: 10px;
+	margin: 60px;
 	padding: 20px;
 	background-color: white;
 	border: 1px solid #ddd;
@@ -101,4 +101,11 @@
       transform: translateY(-50%);
       margin-top: 20px;
 	}
+}
+
+.total-events {
+color: #fff;
+position: absolute;
+margin: 10px;
+padding: 10px;
 }

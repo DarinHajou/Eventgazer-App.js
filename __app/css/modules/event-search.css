@@ -38,17 +38,14 @@
 
 .event-search__title-highlight {
 	text-decoration: underline;
+	/* font-size: 60px; */
 }
+
 
 .event-search__title-highlight::before {
 	content: "";
 	display: inline-block;
 	margin-right: 10px;
-	/* background: url('/__app/assets/images/skyline.svg') no-repeat center center; */
-	/* background-position: 0 10px; */
-	/* background-size: 0dvb; */
-	/* background-size: cover; */
-
  }
  
  #event-search__title:hover {
