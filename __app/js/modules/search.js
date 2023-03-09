@@ -5,10 +5,12 @@ export default function searchEvent() {
   const searchButton = document.getElementById('event-search__button');
   const cityInput = document.getElementById('event-search__location');
   const resultsContainer = document.getElementById('results-container');
+  const loadingSpinner = document.getElementById('loading-spinner');
+  const totalEvents = document.getElementById('total-events');
 
-  if (searchButton && cityInput && resultsContainer) {
+  if (searchButton && cityInput && resultsContainer && loadingSpinner && totalEvents) {
+    loadingSpinner.classList.add('hidden');
     searchButton.addEventListener('click', async function () {
-      resultsContainer.innerHTML = 'Loading...';
       const city = cityInput.value;
 
       try {
@@ -16,14 +18,24 @@ export default function searchEvent() {
           throw new Error('Please enter a valid city name');
         }
 
+        // Hide the spinner and reset the total events
+        loadingSpinner.classList.add('hidden');
+        totalEvents.textContent = '';
+
+        // Show the spinner again
+        loadingSpinner.classList.remove('hidden');
+
         const events = await fetchEvents(city);
         if (events.length === 0) {
           resultsContainer.innerHTML = 'No events found for this city.';
+          totalEvents.textContent = '';
           return;
         }
 
         const resultsHTML = await renderEvents(events);
         resultsContainer.innerHTML = resultsHTML;
+
+        totalEvents.textContent = `Total Events: ${events.length}`;
 
         const eventButtons = document.querySelectorAll('.result-container__moreinfo-button');
         eventButtons.forEach((button) => {
@@ -38,10 +50,14 @@ export default function searchEvent() {
         resultsContainer.innerHTML =
           `An error occurred: ${error.message}. Please try again later.`;
         console.error(error);
+      } finally {
+        // Hide the spinner
+        loadingSpinner.classList.add('hidden');
       }
     });
   }
 }
+
 
 export async function fetchEventDetails(eventId) {
   const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}`;
