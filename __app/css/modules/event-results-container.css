@@ -1,14 +1,15 @@
 #results-container {
 	position: absolute;
 	width: 95%;
-	margin-top: 640px;
+	margin-top: 700px;
 	margin-left: 20px;
-	background-color: rgb(61, 61, 61);
+	background-color: #0D2B3E   ;
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px #333;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
  }
 
  .result-container__moreinfo-button {
@@ -23,6 +24,7 @@
 	color: #fff;
 	border-radius: 10px;
 	cursor: pointer;
+
  }
 
  .result-container__moreinfo-button:hover {
@@ -45,7 +47,7 @@
 	height: 520px;
 	display: inline-block;
 	text-align: center;
-	margin: 60px;
+	margin: 10px;
 	padding: 20px;
 	background-color: white;
 	border: 1px solid #ddd;
