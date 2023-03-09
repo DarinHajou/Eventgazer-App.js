@@ -2,13 +2,17 @@
   import { baseUrl } from './modules/events.js';
   import { clientID } from './env.js';
   import { fetchEventDetails } from './modules/events.js';
+  import renderMap from './modules/mapbox.js';
+
   // import { fetchEventDetails } from './modules/events.js';
   // import { fetchImage } from './modules/events.js';
 
 
   searchEvent();
+  
 
   export async function renderEventDetailsPage(eventDetails) {
+
     const eventName = document.getElementById('event-details__name');
     const eventImage = document.getElementById('event-details__image');
     const eventDate = document.getElementById('event-details__date');
@@ -16,7 +20,6 @@
     const eventVenue = document.getElementById('event-details__venue');
     const eventPriceRanges = document.getElementById('event-details__price-ranges');
     const eventDescription = document.getElementById('event-details__description');
-    const eventTicketPrices = document.getElementById('event-ticket-prices');
     const eventSeatmap = document.getElementById('event-details__seatmap');
     const buyTicketButton = document.getElementById('event-details__buy-button');
     const eventAccessibility = document.getElementById('event-details__accessibility');
@@ -47,12 +50,12 @@
       return;
     }
   
-    mapboxgl.accessToken = 'pk.eyJ1IjoiY29kZXRlZ3JpdHkiLCJhIjoiY2xld2p0ZnBnMGhnbzNzbzRxaTltZHUwcyJ9.ztTEqEq4WeTRyV68oE3wMg';
+  /*   mapboxgl.accessToken = 'pk.eyJ1IjoiY29kZXRlZ3JpdHkiLCJhIjoiY2xld2p0ZnBnMGhnbzNzbzRxaTltZHUwcyJ9.ztTEqEq4WeTRyV68oE3wMg';
   
     const longitude = eventDetails._embedded?.venues?.[0]?.location?.longitude;
     const latitude = eventDetails._embedded?.venues?.[0]?.location?.latitude;
   
-    const map = new mapboxgl.Map({
+    const map = new mapboxgl.Map({  
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [longitude, latitude],
@@ -61,7 +64,13 @@
   
     const marker = new mapboxgl.Marker()
       .setLngLat([longitude, latitude])
-      .addTo(map);
+      .addTo(map); */
+
+      const accessibilityInfo = eventDetails.accessibility;
+      const accessibilityText = `Accessible seating: ${accessibilityInfo?.info?.accessibleSeating || 'Not available'}. Accessible entrance: ${accessibilityInfo?.info?.accessibleEntrance || 'Not available'}. `;
+      eventAccessibility.style.fontWeight = 'normal';
+      eventAccessibility.textContent = accessibilityText;
+      
     
     eventName.textContent = eventDetails.name;
     eventDate.innerHTML = `<b> Date: </b> ${eventDetails.dates.start.localDate}`;
@@ -70,7 +79,18 @@
     eventPriceRanges.innerHTML = `<b>Price Range:</b> ${eventDetails.priceRanges ? eventDetails.priceRanges[0].min + " - " + eventDetails.priceRanges[0].max + " " + eventDetails.priceRanges[0].currency : "Not available"}`;
     eventDescription.textContent = eventDetails.info || 'No information available.';
     eventAccessibility.style.fontWeight = 'normal';
-    eventAccessibility.textContent = eventDetails.accessibility || 'No accessibility information available';
+    eventAccessibility.textContent = eventDetails.accessibility ? eventDetails.accessibility.info : 'No accessibility information available';
+
+      if (eventDetails.accessibility && eventDetails.accessibility.info) {
+    const accessibilityInfo = eventDetails.accessibility.info;
+    const accessibleSeating = accessibilityInfo.accessibleSeating ? `Accessible seating: ${accessibilityInfo.accessibleSeating}. ` : '';
+    const accessibleEntrance = accessibilityInfo.accessibleEntrance ? `Accessible entrance: ${accessibilityInfo.accessibleEntrance}.` : '';
+    const accessibilityText = accessibleSeating + accessibleEntrance;
+    eventAccessibility.textContent = accessibilityText;
+  } else {
+    eventAccessibility.textContent = 'No accessibility information available';
+  }
+
     
 
     if (eventDetails.seatmap) {
@@ -81,6 +101,10 @@
     } else {
       eventSeatmap.textContent = 'Not available';
     }
+
+    const longitude = eventDetails._embedded?.venues?.[0]?.location?.longitude;
+    const latitude = eventDetails._embedded?.venues?.[0]?.location?.latitude;
+      renderMap(longitude, latitude);
 
     try {
       // const { imageUrl, altDescription } = await fetchImage(eventDetails.id);
@@ -102,3 +126,5 @@
       console.error(error);
     }
   }
+
+
