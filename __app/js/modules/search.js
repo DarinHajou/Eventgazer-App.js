@@ -1,4 +1,4 @@
-import { fetchEvents, renderEvents, baseUrl, renderEventDetails } from './fetchEvents.js';
+import { fetchEvents, renderEvents, baseUrl, renderEventDetails } from './events.js';
 // import { fetchEventDetails } from '.fetchEvents.js'; 
 import { clientID } from '../env.js';
 
