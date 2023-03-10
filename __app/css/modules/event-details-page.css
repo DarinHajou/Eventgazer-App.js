@@ -1,5 +1,5 @@
 body {
-	background-color: #0D2B3E;
+	background-color: var(--background-color);
 }
 
 .event-details__image {
@@ -81,7 +81,7 @@ body {
  }
 
  #event-details__buy-button {
-	background-color: #2ecc71;
+	background-color: var(--primary-color);
 	color: #ffffff;
 	border: none;
 	padding: 12px 24px;
@@ -91,5 +91,5 @@ body {
  }
  
  #event-details__buy-button:hover {
-	background-color: #27ae60;
+	background-color: var(--secondary-color);
  }

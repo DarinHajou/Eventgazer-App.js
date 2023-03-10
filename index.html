@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
 
-    <title>Eventgazer-app</title>
+    <title>Eventgazer/Find live events in your city</title>
 
     <link rel="stylesheet" href="/__app/css/main.css">
     <script type="module" src="/__app/js/main.js"></script>
@@ -17,17 +17,23 @@
       Find Live Events in Your <span class="event-search__title-highlight">City!</span>
     </h1>
 
-    <form class="event-search__form">
-      <input type="text" id="event-search__location" class="event-search__form-input" placeholder="Search by City eg. New York" />
-      <button type="button" id="event-search__button">
-        Search
-      </button>
-    </form>
+    <div class="event-search__form-container">
+      <form class="event-search__form">
+        <label for="event-search__location">
+          <span class="visually-hidden">Search by City</span>
+        </label>
+        <input type="text" id="event-search__location" class="event-search__form-input" placeholder="For example, New York" />
+        <button type="submit" id="event-search__button">
+          Search
+        </button>
+      </form>
+    </div>
+    
 
     <div class="moving-text">
-      <img src="./__app/assets/images/Logo.png" alt="">
+      <img src="./__app/assets/images/Logo.png" alt="Logo for Eventgazer App">
       <div class="logo-ticket">
-        <img src="./__app/assets/images/ticket.png" alt="">
+        <img src="./__app/assets/images/ticket.png" alt="Ticket icon for Eventgazer App">
       </div>
     </div>
 
@@ -38,7 +44,51 @@
       </div>
     </div>
 
+    <p>Lorem ipsum dolor sit amet.</p>
+
     <p id="total-events"></p>
   </body>
 
 </html>
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Find Live Events in Your City</title>
+    <link rel="stylesheet" href="/__app/css/main.css">
+    <script type="module" src="/__app/js/main.js"></script>
+  </head>
+  <body class="event-search">
+    <div class="event-search__overlay"></div>
+    <h1 id="event-search__title">
+      Find Live Events in Your <span class="event-search__title-highlight">City!</span>
+    </h1>
+    <form class="event-search__form">
+      <label for="event-search__location">Search by City eg. New York</label>
+      <input type="text" id="event-search__location" class="event-search__form-input" />
+      <button type="submit" id="event-search__button">
+        Search
+      </button>
+    </form>
+    <div class="moving-text">
+      <img src="./__app/assets/images/Logo.png" alt="Logo for Eventgazer App">
+      <div class="logo-ticket">
+        <img src="./__app/assets/images/ticket.png" alt="Ticket icon for Eventgazer App">
+      </div>
+    </div>
+    <div id="results-container" class="event-search__results-container">
+      <div id="loading-spinner" class="hidden">
+        <div class="spinner"></div>
+        <p class="loading-text">Loading<span>.</span><span>.</span><span>.</span></p>
+      </div>
+    </div>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p id="total-events"></p>
+  </body>
+</html> -->

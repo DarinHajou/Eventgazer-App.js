@@ -5,16 +5,17 @@ import { clientID } from '../env.js';
 
 // Get references to HTML elements
 export default function searchEvent() {
-  const searchButton = document.getElementById('event-search__button');
+  const searchForm = document.querySelector('.event-search__form');
   const cityInput = document.getElementById('event-search__location');
   const resultsContainer = document.getElementById('results-container');
   const loadingSpinner = document.getElementById('loading-spinner');
   const totalEvents = document.getElementById('total-events');
 
-  // Initialize the search functionality for events by getting relevant HTML elements and listening for user input. If a valid city name is entered, it fetches and displays event data using the 'fetchEvents' and 'renderEvents' functions.
-  if (searchButton && cityInput && resultsContainer && loadingSpinner && totalEvents) {
+  if (searchForm && cityInput && resultsContainer && loadingSpinner && totalEvents) {
     loadingSpinner.classList.add('hidden');
-    searchButton.addEventListener('click', async function () {
+    searchForm.addEventListener('submit', async function (event) {
+      event.preventDefault(); // prevent the form from submitting and reloading the page
+
       const city = cityInput.value.trim();
       
       try {
@@ -22,11 +23,8 @@ export default function searchEvent() {
           throw new Error('Please enter a valid city name');
         }
         
-        // Hide the spinner and reset the total events
         loadingSpinner.classList.add('hidden');
         totalEvents.textContent = '';
-        
-        // Show the spinner again
         loadingSpinner.classList.remove('hidden');
         
         const events = await fetchEvents(city);
@@ -36,7 +34,6 @@ export default function searchEvent() {
           return;
         }
         
-        // Renders the events for a given city and handles errors. Also adds event listeners for buttons to display event details.
         renderEvents(events).then(() => {
           const resultsHTML = resultsContainer.innerHTML;
           totalEvents.textContent = `Total Events: ${events.length}`;
@@ -57,7 +54,6 @@ export default function searchEvent() {
         `An error occurred: ${error.message}. Please try again later.`;
         console.error(error);
       } finally {
-        // Hide the spinner
         loadingSpinner.classList.add('hidden');
       }
     });
