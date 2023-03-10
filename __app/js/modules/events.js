@@ -108,7 +108,7 @@ export async function renderEvents(events) {
     const moreInfoButton = document.createElement('button');
     moreInfoButton.dataset.id = eventId;
     moreInfoButton.classList.add('result-container__moreinfo-button');
-    moreInfoButton.textContent = 'More info';
+    moreInfoButton.textContent = 'More info & Buy Tickets';
     cardDiv.appendChild(moreInfoButton);
 
     resultsContainer.appendChild(cardDiv);

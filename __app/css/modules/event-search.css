@@ -122,7 +122,7 @@
 
 	.event-search__form-input,
 	#event-search__button {
-		margin: 10px 0;
+		margin: 10px 0px
 	}
 
 	#event-search__button:hover {
@@ -130,3 +130,27 @@
 		color: #fff;
 	}
 }
+
+.moving-text {
+	position: absolute;
+	right: 0;
+	top: 780px;
+	transform: translateY(-50%);
+	font-size: 34px;
+	color: #000;
+	animation: move-left 5s linear infinite;
+ }
+ 
+ .moving-text img {
+	width: 400px;
+	transform-origin: right center;
+ }
+ 
+ @keyframes move-left {
+	0% { right: 0; transform: translateX(0%); }
+	100% { right: 100%; transform: translateX(-100%); }
+ }
+
+ .logo-ticket img {
+	width: 50px;
+ }

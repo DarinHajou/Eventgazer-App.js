@@ -1,30 +1,28 @@
 #results-container {
 	position: absolute;
-	width: 95%;
-	margin-top: 720px;
-	padding: 20px;
-	/* margin-left: 20px; */
+	width: 100%;
+	margin-top: 750px;
+	padding: 30px 10px;
 	background-color: #0D2B3E   ;
 	border-radius: 10px;
 	box-shadow: 0px 0px 10px #333;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 10px;
+	grid-gap: 10px;
  }
 
  .result-container__moreinfo-button {
 	position: relative;
-	top: 59px;
+	top: 100px;
 	right: 50%;
 	transform: translate(-50%, -50%);
-	font-size: 14px;
-	/* display: inline-block; */
-	padding: 10px 30px;
-	background-color: #3E0D2B;
-	color: #fff;
-	border-radius: 10px;
+	background-color: #2ecc71;
+	color: #ffffff;
+	border: none;
+	padding: 10px 74px;
+	border-radius: 6px;
+	font-size: 22px;
 	cursor: pointer;
-
  }
 
  .result-container__moreinfo-button:hover {
@@ -36,38 +34,61 @@
 	max-width: 100%;
 	height: 250px;
 	object-fit: cover;
-	object-fit: cover;
 	object-position: center;
-	transition: 200ms transform ease-in-out;
+	/* transition: 200ms transform ease-in-out; */
 	border-radius: 10px;
  }
 
  .results-container__cards {
 	width: 330px;
-	height: 100%;
+	height: 470px;
 	display: inline-block;
 	text-align: center;
 	margin: 10px;
-	padding: 20px;
-	background-color: white;
-	border: 1px solid #ddd;
+	padding: 30px;
+	background-color: #d3e0dc;
+	background-image: linear-gradient(to bottom, #e0f0ec, #b3c8c0);
+	border: 5px solid #4b6d9a;
 	border-radius: 10px;
-	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-	border: 1px solid gray;
-	white-space: nowrap;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+	transition: transform 0.3s ease-in-out;
 	overflow: hidden;
- }
- 
- .results-container__event-name {
-	font-size: 20px;
+	white-space: nowrap;
+	vertical-align: top;
+}
+
+.results-container__cards:hover {
+	transform: scale(1.05);
+}
+
+.results-container__cards img {
+	filter: brightness(80%) contrast(120%);
+}
+
+.results-container__event-name {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 22px;
+	font-weight: bold;
+	margin: 0 0 10px 0;
 	overflow: hidden;
  }
 
+.results-container__cards p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+	margin: 0;
+}
+
  #total-events {
-	color: #000;
-	position: absolute;
-	top: 800px;
-	margin: 10px;
-	padding: 30px;
-	font-weight: 510;
+	 position: absolute;
+	 top: 900px;
+	 left: 20px;
+	 margin: 10px;
+	 padding: 10px;
+	 color: #fff;
+	 font-size: 18px;
+	 font-weight: 500;
+	 z-index: 100;
 	}
