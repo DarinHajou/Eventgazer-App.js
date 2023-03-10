@@ -6,7 +6,7 @@
 	background-position: center bottom 20px;
 	margin: 0;
 	padding: 0;
-	font-family: 'Montserrat', sans-serif;
+	font-family: var(--tertiary-font);
 	font-size: 24px;
 	color: var(--text-color);
 	/* background-color: var(--background-color); */
@@ -24,7 +24,7 @@
 #event-search__title {
 	position: relative;
 	top: 390px;
-	font-family: 'Helvetica Neue', sans-serif;
+	font-family: var(--secondary-font);
 	font-size: 58px;
 	text-align: center;
 	/* background-color: #333; */
