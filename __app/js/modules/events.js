@@ -2,7 +2,7 @@ import { clientID } from '../env.js';
 export const baseUrl = 'https://app.ticketmaster.com/';
 
 export async function fetchEvents(city) {
-  const endpoint = `${baseUrl}discovery/v2/events.json?apikey=${clientID}&city=${city}&size=23`;
+  const endpoint = `${baseUrl}discovery/v2/events.json?apikey=${clientID}&city=${city}&size=24`;
   const response = await fetch(endpoint);
 
   if (!response.ok) {
