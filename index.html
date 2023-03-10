@@ -1,43 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width">
 
-    <title>Eventgazer-app</title>
+      <title>Eventgazer-app</title>
+      
+      <link rel="stylesheet" href="/__app/css/main.css">
+      <script type="module" src="/__app/js/main.js"></script>
+    </head>
+
+    <body class="event-search">
+      <div class="event-search__overlay"></div>
+      
+      <h1 id="event-search__title">
+        Find Live Events in Your <span class="event-search__title-highlight">City!</span>
+    </h1>
     
-    <link rel="stylesheet" href="/__app/css/main.css">
-    <script type="module" src="/__app/js/main.js"></script>
-  </head>
+      <form class="event-search__form">
+        <input
+          type="text"
+          id="event-search__location"
+          class="event-search__form-input"
+          placeholder="Search by City eg. New York"
+        />
+        <button type="button" id="event-search__button">
+          Search
+        </button>
+      </form>
 
-  <body class="event-search">
-    <div class="event-search__overlay"></div>
-    
-    <h1 id="event-search__title">
-      Find Live Events in Your <span class="event-search__title-highlight">City!</span>
-  </h1>
-  
-    <form class="event-search__form">
-      <input
-        type="text"
-        id="event-search__location"
-        class="event-search__form-input"
-        placeholder="Search by City eg. New York"
-      />
-      <button type="button" id="event-search__button">
-        Search
-      </button>
-    </form>
+      <div class="moving-text"> <img src="./__app/assets/images/Logo.png" alt=""> <div class="logo-ticket"> <img src="./__app/assets/images/ticket.png" alt="">
+      </div></div>
+      <div id="results-container" class="event-search__results-container">
 
-    <div class="moving-text"> <img src="./__app/assets/images/Logo.png" alt=""> <div class="logo-ticket"> <img src="./__app/assets/images/ticket.png" alt="">
-    </div></div>
-    <div id="results-container" class="event-search__results-container">
-
-<div id="loading-spinner" class="hidden">
-  <div class="spinner"></div>
-  <p class="loading-text">Loading<span>.</span><span>.</span><span>.</span></p>
-</div>
-    </div>
-    <p id="total-events"></p>
-  </body>
-</html>
+  <div id="loading-spinner" class="hidden">
+    <div class="spinner"></div>
+    <p class="loading-text">Loading<span>.</span><span>.</span><span>.</span></p>
+  </div>
+      </div>
+      <p id="total-events"></p>
+    </body>
+  </html>
