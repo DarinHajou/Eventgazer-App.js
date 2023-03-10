@@ -51,26 +51,26 @@ export async function fetchEvents(city) {
     }
   }
 
-export async function renderEventDetails(eventDetails, imageUrl, altDescription) {
-  const eventName = document.getElementById('event-results__name');
-  const eventDate = document.getElementById('event-results__date');
-  const eventVenue = document.getElementById('event-results__venue');
-  const eventDescription = document.getElementById('event-results__description');
-  const eventImage = document.getElementById('event-results__image');
+  export async function renderEventDetails(eventDetails, imageUrl, altDescription) {
+    const eventName = document.getElementById('event-results__name');
+    const eventDate = document.getElementById('event-results__date');
+    const eventVenue = document.getElementById('event-results__venue');
+    const eventDescription = document.getElementById('event-results__description');
+    const eventImage = document.getElementById('event-results__image');
   
   if (!eventDetails) {
     eventName.textContent = 'No event details available';
     return;
   }
   
-  eventName.textContent = eventDetails.name;
-  eventDate.textContent = eventDetails.dates.start.localDate;
-  eventVenue.textContent = eventDetails._embedded?.venues?.[0]?.name;
-  eventDescription.textContent = eventDetails.info || 'No information available.';
-  
-  eventImage.setAttribute('src', imageUrl);
-  eventImage.setAttribute('alt', altDescription);
-}
+    eventName.textContent = eventDetails.name;
+    eventDate.textContent = eventDetails.dates.start.localDate;
+    eventVenue.textContent = eventDetails._embedded?.venues?.[0]?.name;
+    eventDescription.textContent = eventDetails.info || 'No information available.';
+    
+    eventImage.setAttribute('src', imageUrl);
+    eventImage.setAttribute('alt', altDescription);
+  }
 
 export async function renderEvents(events) {
   const resultsContainer = document.getElementById('results-container');

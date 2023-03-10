@@ -2,13 +2,16 @@ import { fetchEvents, renderEvents, baseUrl, renderEventDetails } from './events
 // import { fetchEventDetails } from '.fetchEvents.js'; 
 import { clientID } from '../env.js';
 
+
+// Get references to HTML elements
 export default function searchEvent() {
   const searchButton = document.getElementById('event-search__button');
   const cityInput = document.getElementById('event-search__location');
   const resultsContainer = document.getElementById('results-container');
   const loadingSpinner = document.getElementById('loading-spinner');
   const totalEvents = document.getElementById('total-events');
-  
+
+  // Initialize the search functionality for events by getting relevant HTML elements and listening for user input. If a valid city name is entered, it fetches and displays event data using the 'fetchEvents' and 'renderEvents' functions.
   if (searchButton && cityInput && resultsContainer && loadingSpinner && totalEvents) {
     loadingSpinner.classList.add('hidden');
     searchButton.addEventListener('click', async function () {
@@ -33,7 +36,7 @@ export default function searchEvent() {
           return;
         }
         
-        // Corrected code:
+        // Renders the events for a given city and handles errors. Also adds event listeners for buttons to display event details.
         renderEvents(events).then(() => {
           const resultsHTML = resultsContainer.innerHTML;
           totalEvents.textContent = `Total Events: ${events.length}`;
@@ -61,6 +64,7 @@ export default function searchEvent() {
   }
 }
 
+// This function fetches event details using the provided event ID and returns the data in JSON format. If an error occurs, it throws an error with a message.
 export async function fetchEventDetails(eventId) {
   const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}`;
   const response = await fetch(endpoint);
