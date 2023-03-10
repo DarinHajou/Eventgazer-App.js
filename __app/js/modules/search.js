@@ -32,20 +32,22 @@ export default function searchEvent() {
           return;
         }
 
-        const resultsHTML = await renderEvents(events);
-        resultsContainer.innerHTML = resultsHTML;
-
-        totalEvents.textContent = `Total Events: ${events.length}`;
-
-        const eventButtons = document.querySelectorAll('.result-container__moreinfo-button');
-        eventButtons.forEach((button) => {
-          button.addEventListener('click', async (event) => { 
-            const eventId = event.target.dataset.id;
-            const eventDetails = await fetchEventDetails(eventId);
-            renderEventDetails(eventDetails);
-            window.location.href = `../event-details.html?id=${eventId}`;
+        // Corrected code:
+        renderEvents(events).then(() => {
+          const resultsHTML = resultsContainer.innerHTML;
+          totalEvents.textContent = `Total Events: ${events.length}`;
+  
+          const eventButtons = document.querySelectorAll('.result-container__moreinfo-button');
+          eventButtons.forEach((button) => {
+            button.addEventListener('click', async (event) => { 
+              const eventId = event.target.dataset.id;
+              const eventDetails = await fetchEventDetails(eventId);
+              renderEventDetails(eventDetails);
+              window.location.href = `../event-details.html?id=${eventId}`;
+            });
           });
         });
+        
       } catch (error) {
         resultsContainer.innerHTML =
           `An error occurred: ${error.message}. Please try again later.`;
@@ -57,6 +59,7 @@ export default function searchEvent() {
     });
   }
 }
+
 
 
 export async function fetchEventDetails(eventId) {
