@@ -54,7 +54,6 @@ export async function fetchEvents(city) {
 export async function renderEventDetails(eventDetails, imageUrl, altDescription) {
   const eventName = document.getElementById('event-results__name');
   const eventDate = document.getElementById('event-results__date');
-  const eventTime = document.getElementById('event-results__time');
   const eventVenue = document.getElementById('event-results__venue');
   const eventDescription = document.getElementById('event-results__description');
   const eventImage = document.getElementById('event-results__image');
@@ -66,7 +65,6 @@ export async function renderEventDetails(eventDetails, imageUrl, altDescription)
   
   eventName.textContent = eventDetails.name;
   eventDate.textContent = eventDetails.dates.start.localDate;
-  // eventTime.textContent = eventDetails.dates.start.localTime;
   eventVenue.textContent = eventDetails._embedded?.venues?.[0]?.name;
   eventDescription.textContent = eventDetails.info || 'No information available.';
   

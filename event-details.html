@@ -1,61 +1,62 @@
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width">
-      <title>Event Details</title>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
 
-      <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
-      <link href='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
-      
-      <link rel="stylesheet" href="/__app/css/main.css">
-      <script type="module" src="/__app/js/main.js"></script>
-      <script type="module" src="/__app/js/modules/events.js"></script>
-    </head>
+    <title>Event Details</title>
 
-    <body>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
+
+    <link rel="stylesheet" href="/__app/css/main.css">
+    <script type="module" src="/__app/js/main.js"></script>
+    <script type="module" src="/__app/js/modules/events.js"></script>
+  </head>
+  
+  <body>
+
+    <br>
+    <h1>Event Details</h1>
+
+    <div class="event-details">
+      <img id="event-details__image" class="event-details__image" src="" alt="Event image">
+
+      <h2 id="event-details__name"></h2>
+
+      <p id="event-details__date"></p>
+
+      <p id="event-details__time"></p>
+
+      <p id="event-details__venue"></p>
+
+      <p id="event-details__price-ranges"></p>
 
       <br>
-      <h1>Event Details</h1>
 
-      <div class="event-details">
-        <img id="event-details__image" class="event-details__image" src="" alt="Event image">
-        
-        <h2 id="event-details__name"></h2>
-      
-        <p id="event-details__date"></p>
-      
-        <p id="event-details__time"></p>
+      <button id="event-details__buy-button">Buy Ticket</button>
 
-        <p id="event-details__venue"></p>
+      <br>
+      <br>
 
-        <p id="event-details__price-ranges"></p> 
+      <h3>Event Schedule:</h3>
 
-        <br>
-           
-        <button id="event-details__buy-button">Buy Ticket</button>
+      <ul id="event-details__schedule"></ul>
 
-        <br>
-        <br>
+      <p><span>Event Description: <br></span> <span id="event-details__description"></span></p>
 
-        <h3>Event Schedule:</h3>
-        
-        <ul id="event-details__schedule"></ul>
-    
-        <p><span>Event Description: <br></span> <span id="event-details__description"></span></p>
+      <br>
 
-        <br>
-      
-        <p><span>Seatmap:</span> <span id="event-details__seatmap"></span></p>
+      <p><span>Seatmap:</span> <span id="event-details__seatmap"></span></p>
 
-        <br>
+      <br>
 
-        <div id='map' class='event-details__map'></div>
+      <div id='map' class='event-details__map'></div>
 
-        <br>
+      <br>
 
-        <p><span>Accessibility Information:</span> <span id="event-details__accessibility"></span></p>
+      <p><span>Accessibility Information:</span> <span id="event-details__accessibility"></span></p>
 
-      </div>
-    </body>
-  </html>
+    </div>
+  </body>
+</html>
