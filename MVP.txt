@@ -1,0 +1,17 @@
+MVP Synopsis: Event Search and Details Webpage with Ticketing Integration
+
+
+1. A search function that allows users to find live events 
+	in their city by entering a city name.
+
+2. A results page that displays event cards with information
+ 	about each event, including the event name, date, city, and image.
+
+3. A button on each event card that allows users to view
+ 	more information about the event, including the event name, date, time, venue,
+	price ranges, description, accessibility information, and a link to buy tickets.
+
+4. A detailed event details page that displays all the information about 
+	the selected event, including a map of the venue location, schedule, and seatmap.
+	
+5. A responsive design that works well on desktop and mobile devices.
