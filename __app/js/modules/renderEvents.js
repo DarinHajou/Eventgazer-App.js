@@ -1,8 +1,7 @@
-import searchEvents from './eventSearch.js';
-import { baseUrl, fetchEventDetails } from './fetchEvents.js';
+import searchEvents from './search.js';
+import { baseUrl, fetchEventDetails } from './events.js';
 import { clientID } from '../env.js';
-import renderMap from './modules/mapbox.js';
-
+import renderMap from './mapbox.js';
 
 
 // Call the function to render the event details page on page load
