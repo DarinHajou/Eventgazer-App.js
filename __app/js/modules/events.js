@@ -1,8 +1,16 @@
 import { clientID } from '../env.js';
 export const baseUrl = 'https://app.ticketmaster.com/';
 
+
 export async function fetchEvents(city) {
-  const endpoint = `${baseUrl}discovery/v2/events.json?apikey=${clientID}&city=${city}&size=200`;
+  const queryParams = new URLSearchParams({
+    apikey: clientID,
+    city: city,
+    size: 200,
+    sort: 'date,asc'
+  });
+
+  const endpoint = `${baseUrl}discovery/v2/events.json?${queryParams.toString()}`;
   const response = await fetch(endpoint);
 
   if (!response.ok) {
@@ -11,49 +19,37 @@ export async function fetchEvents(city) {
 
   const data = await response.json();
 
-  if (data._embedded && data._embedded.events && data._embedded.events.length > 0) {
-    return data._embedded.events;
+  if (data._embedded?.events?.length > 0) {
+    const events = data._embedded.events.map(event => {
+      const imageUrl = event.images?.[0]?.url || '';
+      const altDescription = event.images?.[0]?.alt || 'No image available';
+      return { ...event, imageUrl, altDescription };
+    });
+    return events;
   } else {
     throw new Error('No events found.');
   }
 }
 
-export async function fetchImage(eventId) {
-  const endpoint = `${baseUrl}discovery/v2/events/${eventId}/images.json?apikey=${clientID}`;
-  const response = await fetch(endpoint);
+  export async function fetchEventDetails(eventId) {
+    const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}&include=dates`;
+    const response = await fetch(endpoint);
 
-  if (!response.ok) {
-    throw new Error('Unable to fetch image.');
+    if (!response.ok) {
+      throw new Error('Unable to fetch event details.');
+    }
+
+    const data = await response.json();
+
+    if (data) {
+      const priceRanges = data?.priceRanges?.map(priceRange => `${priceRange.min} - ${priceRange.max} ${priceRange.currency}`).join(', ');
+      const eventDetails = { ...data, priceRanges };
+      console.log(eventDetails);
+      return eventDetails;
+    } else {
+      throw new Error('No event details found.');
+    }
   }
-
-  const data = await response.json();
-
-  if (data.images.length === 0) {
-    return { imageUrl: '', altDescription: 'No image available' };
-  }
-
-  return { imageUrl: data.images[0].url, altDescription: data.images[0].alt };
-}
-
-export async function fetchEventDetails(eventId) {
-  const endpoint = `${baseUrl}discovery/v2/events/${eventId}.json?apikey=${clientID}&include=dates`;
-  const response = await fetch(endpoint);
-
-  if (!response.ok) {
-    throw new Error('Unable to fetch event details.');
-  }
-
-  const data = await response.json();
-
-  if (data) {
-    const priceRanges = data?.priceRanges?.map(priceRange => `${priceRange.min} - ${priceRange.max} ${priceRange.currency}`).join(', ');
-    const eventDetails = { ...data, priceRanges };
-    console.log(eventDetails);
-    return eventDetails;
-  } else {
-    throw new Error('No event details found.');
-  }
-}
 
 export async function renderEventDetails(eventDetails, imageUrl, altDescription) {
   const eventName = document.getElementById('event-results__name');
@@ -70,7 +66,7 @@ export async function renderEventDetails(eventDetails, imageUrl, altDescription)
   
   eventName.textContent = eventDetails.name;
   eventDate.textContent = eventDetails.dates.start.localDate;
-  eventTime.textContent = eventDetails.dates.start.localTime;
+  // eventTime.textContent = eventDetails.dates.start.localTime;
   eventVenue.textContent = eventDetails._embedded?.venues?.[0]?.name;
   eventDescription.textContent = eventDetails.info || 'No information available.';
   
@@ -79,22 +75,42 @@ export async function renderEventDetails(eventDetails, imageUrl, altDescription)
 }
 
 export async function renderEvents(events) {
-  let resultsHTML = '';
+  const resultsContainer = document.getElementById('results-container');
+  resultsContainer.innerHTML = '';
 
   for (const event of events) {
     const eventId = event.id;
-   const imageUrl = event.images?.[0]?.url || '';
-const altDescription = event.images?.[0]?.alt || 'No image available';
-     resultsHTML += `
-      <div class="results-container__cards"> 
-        <h2 class="results-container__event-name">${event.name}</h2> 
-        <p>${event.dates.start.localDate}</p> 
-        <p>${event.dates.start.localTime}</p> 
-        <p>${event._embedded?.venues?.[0]?.city?.name}</p> 
-        <img src="${imageUrl}" alt="${altDescription}" class="results-container__image"> 
-        <button data-id="${eventId}" class="result-container__moreinfo-button">More info</button>
-      </div>`;
-  }
+    const imageUrl = event.images?.[0]?.url || '';
+    const altDescription = event.images?.[0]?.alt || 'No image available';
+    
+    const cardDiv = document.createElement('div');
+    cardDiv.classList.add('results-container__cards');
+    
+    const eventNameH2 = document.createElement('h2');
+    eventNameH2.classList.add('results-container__event-name');
+    eventNameH2.textContent = event.name;
+    cardDiv.appendChild(eventNameH2);
+    
+    const dateP = document.createElement('p');
+    dateP.textContent = event.dates.start.localDate;
+    cardDiv.appendChild(dateP);
+    
+    const cityP = document.createElement('p');
+    cityP.textContent = event._embedded?.venues?.[0]?.city?.name || 'Not available';
+    cardDiv.appendChild(cityP);
+    
+    const img = document.createElement('img');
+    img.src = imageUrl;
+    img.alt = altDescription;
+    img.classList.add('results-container__image');
+    cardDiv.appendChild(img);
+    
+    const moreInfoButton = document.createElement('button');
+    moreInfoButton.dataset.id = eventId;
+    moreInfoButton.classList.add('result-container__moreinfo-button');
+    moreInfoButton.textContent = 'More info';
+    cardDiv.appendChild(moreInfoButton);
 
-  return resultsHTML;
+    resultsContainer.appendChild(cardDiv);
+  }
 }
