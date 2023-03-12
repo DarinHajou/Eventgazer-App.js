@@ -1,47 +1,53 @@
 body {
-	background-color: #0D2B3E;
+	background-color: var(--background-color);
 }
 
-.event-details__image {
-	/* max-width: 100%;
-	height: 50px; */
-	object-fit: cover;
-	/* object-position: center; */
-	transition: 200ms transform ease-in-out;
-	border-radius: 10px;
- }
- 
- img:hover {
-	transform: scale(1.075);
- }
+h1 {
+  font-size: 42px;
+  margin: 0;
+  margin-bottom: 16px;
+  padding: 20px;
+  color: var(--text-color);
+  text-align: center;
+}
 
- /* .details-container {
-	font-family: Arial, sans-serif;
-	font-size: 90px;
-	margin: 0;
-	padding: 0;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	background-color: #f0f0f0;
- }  */
+p {
+  margin: 0;
+  margin-bottom: 8px;
+  line-height: 1.5;
+  padding: 5px;
+}
+
+span {
+  font-weight: bold;
+  display: flex;
+ justify-content: center;
+}
+
+ /* img:hover {
+	transform: scale(1.075);
+ } */
  
  .event-details {
-	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-family: var(--tertiary-font);
+	background-color: #d6e5f5;
 	text-align: center;
-	max-width: 1000px;
+	max-width: 1400px;
 	margin: 0 auto;
-	background-color: #fff;
+	/* background-color: #fff; */
 	padding: 20px;
-	border-radius: 6px;
+	border-radius: var(--border-radius);
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+ }
+
+ #event-details__name {
+	font-family: var(--primary-font);
  }
  
  .event-details__image {
-	/* max-width: 100%; */
 	height: 400px;
-	margin-bottom: 16px;
-	padding: 10px;
+	padding: 50px;
+	object-fit: cover;
  }
 
 #event-details__description {
@@ -49,47 +55,32 @@ body {
 }
 
  .event-details__map {
-	width: 100%;
+	position: relative;
+	left: 130px;
+	width: 80%;
 	height: 400px;
 	padding: 10px;
-	border-radius: 6px;
-	overflow: visible;
+	border-radius: var(--border-radius);
+
+	/* overflow: visible; */
  }
 
- h1 {
-	font-size: 42px;
-	margin: 0;
-	margin-bottom: 16px;
-	color: white;
-	text-align: center;
- }
-
- p {
-	margin: 0;
-	margin-bottom: 8px;
-	line-height: 1.5;
-	padding: 5px;
- }
- 
- span {
-	font-weight: bold;
- }
 
  #event-details__seatmap img {
-	width: 100%;
+	width: 70%;
 	height: auto;
  }
 
  #event-details__buy-button {
-	background-color: #2ecc71;
+	background-color: var(--primary-color);
 	color: #ffffff;
 	border: none;
 	padding: 12px 24px;
-	border-radius: 6px;
+	border-radius: var(--border-radius);
 	font-size: 22px;
 	cursor: pointer;
  }
  
  #event-details__buy-button:hover {
-	background-color: #27ae60;
+	background-color: var(--secondary-color);
  }

@@ -6,9 +6,10 @@
 	background-position: center bottom 20px;
 	margin: 0;
 	padding: 0;
-	font-family: 'Montserrat', sans-serif;
+	font-family: var(--tertiary-font);
 	font-size: 24px;
-	color: rgb(0, 0, 0);
+	color: var(--text-color);
+	/* background-color: var(--background-color); */
 }
 
 .event-search__overlay {
@@ -17,18 +18,18 @@
 	left: 0;
 	height: 97%;
 	width: 100%;
-	background-color: rgba(39, 37, 37, 0.4);
+	background-color: var(--overlay-color);
 }
 
 #event-search__title {
 	position: relative;
-	top: 320px;
-	font-family: 'Helvetica Neue', sans-serif;
+	top: 390px;
+	font-family: var(--secondary-font);
 	font-size: 58px;
 	text-align: center;
 	/* background-color: #333; */
 	padding: 10px;
-	color: #ff9900;
+	color:rgb(173, 159, 159);
 	letter-spacing: 1px;
 }
 
@@ -47,17 +48,28 @@
  #event-search__title:hover {
 	color: #fff;
 	transition: color 0.3s ease-in-out;
+	
  }
+.event-search__form-container {
+	position: relative;
+	top: 450px;
+	/* display: flex;
+  	flex-direction: column;	 */
+ }
+
+ .event-search__form-container label {
+	position: absolute;
+	display: block;
+ 	margin-bottom: 45px;;
+ } 
  
 .event-search__form {
 	position: relative;
 	top: 50%;
 	left:55%;
 	transform: translate(-50%, -50%);
-	display: flex;
-	justify-content: center;
 	width: 60%;
-}
+} 
 
 .event-search__form-input {
 	margin-top: 30px auto;
@@ -71,12 +83,24 @@
 	margin-right: 25px;
 }
 
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+ }
+
 #event-search__button {
 	width: 20%;
 	height: 60px;
 	padding: 20px;
 	font-size: 18px;
-	background-color: #333;
+	background-color: var(--primary-color);
 	color: #fff;
 	border: none;
 	border-radius: 5px;
@@ -84,7 +108,7 @@
 }
 
 #event-search__button:hover {
-	background-color: #fff;
+	background-color: var(--secondary-color);
 	color: #333;
 }
 
@@ -134,7 +158,7 @@
 .moving-text {
 	position: absolute;
 	right: 0;
-	top: 780px;
+	top: 830px;
 	transform: translateY(-50%);
 	font-size: 34px;
 	color: #000;
@@ -142,7 +166,7 @@
  }
  
  .moving-text img {
-	width: 400px;
+	width: 200px;
 	transform-origin: right center;
  }
  
@@ -152,5 +176,5 @@
  }
 
  .logo-ticket img {
-	width: 50px;
+	width: 30px;
  }
