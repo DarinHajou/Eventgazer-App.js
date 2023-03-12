@@ -48,10 +48,8 @@ export default function searchEvent() {
             });
           });
         });
-        
       } catch (error) {
-        resultsContainer.innerHTML =
-        `An error occurred: ${error.message}. Please try again later.`;
+        resultsContainer.innerHTML = `An error occurred: ${error.message}`;
         console.error(error);
       } finally {
         loadingSpinner.classList.add('hidden');
