@@ -12,41 +12,31 @@
 
   <body class="event-search">
     <div class="event-search__overlay"></div>
-
+  
     <h1 id="event-search__title">
       Find Live Events in Your <span class="event-search__title-highlight">City!</span>
     </h1>
-
+  
     <div class="event-search__form-container">
       <form class="event-search__form">
         <label for="event-search__location">
           <span class="visually-hidden">Search by City</span>
+          <button type="submit" id="event-search__button">
+            Search
+          </button>
         </label>
         <input type="text" id="event-search__location" class="event-search__form-input" placeholder="For example, New York" />
-        <button type="submit" id="event-search__button">
-          Search
-        </button>
       </form>
     </div>
-    
-
-    <div class="moving-text">
-      <img src="./__app/assets/images/Logo.png" alt="Logo for Eventgazer App">
-      <div class="logo-ticket">
-        <img src="./__app/assets/images/ticket.png" alt="Ticket icon for Eventgazer App">
-      </div>
+    <div id="loading-spinner" class="hidden">
+      <div class="spinner"></div>
+      <p class="loading-text">Loading<span>.</span><span>.</span><span>.</span></p>
     </div>
-
-    <div id="results-container" class="event-search__results-container">
-      <div id="loading-spinner" class="hidden">
-        <div class="spinner"></div>
-        <p class="loading-text">Loading<span>.</span><span>.</span><span>.</span></p>
-      </div>
+  
+    <div id="results-container" class="hidden">
     </div>
-
-    <p>Lorem ipsum dolor sit amet.</p>
-
+  
     <p id="total-events"></p>
+    <p id="error-message" ></p>
   </body>
-
 </html>

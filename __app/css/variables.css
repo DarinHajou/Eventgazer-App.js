@@ -1,24 +1,26 @@
 :root {
+	--background-color: #0D2B3E; 
 	--primary-color: #2ecc71;
+	--tertiary-color: #ffffff;
 	--secondary-color: #27ae60;
 	--text-color: #333;
-	--background-color: #ffffff;
 	--overlay-color: rgba(39, 37, 37, 0.4);
  }
 
  :root {
-	--primary-font: 'Montserrat', sans-serif;
+	--primary-font:'Bebas Neue', cursive;
 	--secondary-font: 'Helvetica Neue', sans-serif;
 	--tertiary-font: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
  }
 
  :root {
-	--border-radius: 6px;
+	--border-radius: 5px;
 	--secondary-border-radius: 10px;
+	--padding: 20px;
 	--box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
  }
 
 
  *:focus {
-	outline: 2px solid blue;
+	outline: 3px solid blue;
  }
