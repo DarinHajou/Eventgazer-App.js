@@ -22,10 +22,12 @@ export default function searchEvent() {
         if (!city) {
           throw new Error('Please enter a valid city name');
         }
-        
-        loadingSpinner.classList.add('hidden');
-        totalEvents.textContent = '';
+
+        // Add hidden class to the results container
+        resultsContainer.classList.add('hidden');
+        resultsContainer.innerHTML = '';
         loadingSpinner.classList.remove('hidden');
+        totalEvents.textContent = '';
         
         const events = await fetchEvents(city);
         if (events.length === 0) {
@@ -47,16 +49,23 @@ export default function searchEvent() {
               window.location.href = `../event-details.html?id=${eventId}`;
             });
           });
+
+          // Remove the hidden class from the results container
+          resultsContainer.classList.remove('hidden');
         });
+        
       } catch (error) {
-        resultsContainer.innerHTML = `An error occurred: ${error.message}`;
+        resultsContainer.innerHTML =
+        `An error occurred: ${error.message}`;
         console.error(error);
+        resultsContainer.classList.add('hidden');
       } finally {
         loadingSpinner.classList.add('hidden');
       }
     });
   }
 }
+
 
 // This function fetches event details using the provided event ID and returns the data in JSON format. If an error occurs, it throws an error with a message.
 export async function fetchEventDetails(eventId) {

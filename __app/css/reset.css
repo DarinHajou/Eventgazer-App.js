@@ -3,3 +3,12 @@
 	margin: 0;
 	padding: 0;
 }
+
+
+button {
+	font: inherit;
+	color: inherit;
+	background: inherit;
+	border: 0;
+	cursor: pointer;
+}  

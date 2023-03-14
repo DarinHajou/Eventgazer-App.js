@@ -1,5 +1,5 @@
 body {
-	background-color: var(--background-color);
+	background-color: rgb(18, 17, 17);
 }
 
 h1 {
@@ -7,7 +7,7 @@ h1 {
   margin: 0;
   margin-bottom: 16px;
   padding: 20px;
-  color: var(--text-color);
+  color: var(--tertiary-color);
   text-align: center;
 }
 
@@ -29,10 +29,11 @@ span {
  } */
  
  .event-details {
-	font-family: var(--tertiary-font);
+	font-family: var(--secondary-font);
+	font-size: 22px;
 	background-color: #d6e5f5;
 	text-align: center;
-	max-width: 1400px;
+	max-width: 1000px;
 	margin: 0 auto;
 	/* background-color: #fff; */
 	padding: 20px;
