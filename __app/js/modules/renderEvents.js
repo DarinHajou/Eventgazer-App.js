@@ -1,6 +1,6 @@
 import searchEvents from './search.js';
 import { baseUrl, fetchEventDetails } from './events.js';
-import { clientID } from '../env.js';
+import { clientID } from './env.js';
 import renderMap from './mapbox.js';
 
 

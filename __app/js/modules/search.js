@@ -1,6 +1,6 @@
 import { fetchEvents, renderEvents, baseUrl, renderEventDetails } from './events.js';
 // import { fetchEventDetails } from '.fetchEvents.js'; 
-import { clientID } from '../env.js';
+import { clientID } from './env.js';
 
 
 // Get references to HTML elements
