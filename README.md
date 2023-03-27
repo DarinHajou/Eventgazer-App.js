@@ -18,6 +18,7 @@ These instructions will help you set up the project on your local machine for de
 Click on an event to see more details.
 
 #Project Highlights
+
 -Allows users to search for live events in their city
 -Displays a list of live events with name, date, time, venue, and price ranges
 -Allows users to view more details for each event, including a description and image
@@ -25,6 +26,7 @@ Click on an event to see more details.
 -Responsive design that works well on both desktop and mobile devices
 
 #Future Improvements
+
 -Allow users to filter events by date, time, and price range
 -Allow users to sort events by date or price range
 -Add a map that shows the location of each event

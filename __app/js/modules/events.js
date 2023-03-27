@@ -1,4 +1,4 @@
-import { clientID } from '../env.js';
+import { clientID } from './env.js';
 export const baseUrl = 'https://app.ticketmaster.com/';
 
 
