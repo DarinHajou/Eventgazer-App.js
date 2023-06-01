@@ -3,20 +3,18 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-
     <title>Eventgazer/Find live events in your city</title>
-
     <link rel="stylesheet" href="/__app/css/main.css">
     <script type="module" src="/__app/js/main.js"></script>
   </head>
 
   <body class="event-search">
     <div class="event-search__overlay"></div>
-  
+
     <h1 id="event-search__title">
       Find Live Events in Your <span class="event-search__title-highlight">City!</span>
     </h1>
-  
+
     <div class="event-search__form-container">
       <form class="event-search__form">
         <label for="event-search__location">
@@ -28,16 +26,15 @@
         </label>
       </form>
     </div>
-    
+
     <div id="loading-spinner" class="hidden">
       <div class="spinner"></div>
       <p class="loading-text">Loading<span>.</span><span>.</span><span>.</span></p>
     </div>
-  
-    <div id="results-container" class="hidden">
-    </div>
-  
+
+    <div id="results-container" class="hidden"></div>
+
     <p id="total-events"></p>
-    <p id="error-message" ></p>
+    <p id="error-message"></p>
   </body>
 </html>
